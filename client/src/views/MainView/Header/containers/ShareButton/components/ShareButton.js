@@ -83,6 +83,7 @@ export default class ShareButton extends PureComponent<Props, State> {
     this.props.setCreationDate()
     const state = this.props.getState()
     const dehydrated = dehydrate(state)
+    console.log('dehydrated client', dehydrated)
     const id = this.getId()
     saveGraph(id, dehydrated)
     this.setState( { id } )
@@ -100,24 +101,20 @@ export default class ShareButton extends PureComponent<Props, State> {
   }
 
   renderContent() {
-    const url = this.state.id && `${URL_FRONT}/${this.state.id}`
+    // const url = this.state.id && `${URL_FRONT}/${this.state.id}`
     return (
       <SharePopoverContainer>
-        <Input readOnly={true} value={url}/>
-        <CopyContainer>
-          <CopyToClipboard text={url} onCopy={this.onCopy}>
-            <Button type='primary' style={copyButtonStyle} >Copy</Button>
-          </CopyToClipboard>
-          <CopyStatus isVisible={this.state.isCopied}>
-            Copied!
-          </CopyStatus>
-        </CopyContainer>
+        <label for='scene-id'>
+          Scene ID
+        </label>
+        <Input id='scene-id' readOnly={true} value={this.state.id}/>
+        <Button type='primary' style={copyButtonStyle} >Save Scene to Project</Button>
         {
-          process.env.NODE_ENV === 'development' && (
-            <CopyToClipboard text={this.dehydratedJson}>
-              <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
-            </CopyToClipboard>
-          )
+          // process.env.NODE_ENV === 'development' && (
+          //   <CopyToClipboard text={this.dehydratedJson}>
+          //     <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
+          //   </CopyToClipboard>
+          // )
         }
 
       </SharePopoverContainer>
@@ -127,15 +124,15 @@ export default class ShareButton extends PureComponent<Props, State> {
   render() {
     return (
       <PopModal
-        title={'Share your scene'}
+        title={'Save your scene'}
         onVisibleChange={this.onVisibleChange}
         source={
           <span
             onPointerDown={this.saveCameraData}
             onClick={this.saveGraph}
           >
-            <Icon type='cloud' style={ { paddingRight: '4px' } } />
-            Share
+            <Icon type='save' style={ { paddingRight: '4px' } } />
+            Save Graph (Dev Only)
           </span>
         }
       >

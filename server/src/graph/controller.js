@@ -2,8 +2,10 @@ import * as queries from './queries'
 
 export async function saveNewGraph(req, res) {
   const db = req.db
-  console.log(req.body)
+  console.log('REQUEST BODY', req.body)
   const { urlKey, dehydrated } = req.body
+  console.log('urlKey', urlKey)
+  console.log('DEHYDRATED', dehydrated)
   await db.none(queries.insertGraph, { urlKey, dehydrated })
   // const newGraph = Graph(req.body)
   // await newGraph.save()

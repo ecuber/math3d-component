@@ -39,8 +39,12 @@ const Header = () => {
       <HeaderGroup>
         <HeaderMenu>
           <Item><ExamplesButton /></Item>
-          <Item><ShareButton getState={store.getState}/></Item>
-          <Item><HelpButton/></Item>
+          {/** TODO: update save button styles */}
+          {
+            process.env.NODE_ENV === 'development' &&
+            <Item><ShareButton getState={store.getState}/></Item>
+          }
+          {/* <Item><HelpButton/></Item> */}
         </HeaderMenu>
       </HeaderGroup>
     </HeaderContainer>
