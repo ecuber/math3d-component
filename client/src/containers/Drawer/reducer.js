@@ -4,7 +4,7 @@ export const DEFAULT_WIDTH = '400px'
 
 export const initialState = {
   main: {
-    isVisible: true,
+    isVisible: process.env.NODE_ENV === 'development',
     isAnimating: false,
     width: DEFAULT_WIDTH
   },

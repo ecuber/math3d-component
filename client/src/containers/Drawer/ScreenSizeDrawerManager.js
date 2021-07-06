@@ -29,8 +29,10 @@ class ScreenSizeDrawerManager extends React.PureComponent<Props> {
       setWidth(id, '290px')
     }
     else {
-      openDrawer(id)
-      setWidth(id, DEFAULT_WIDTH)
+      if (process.env.NODE_ENV === 'development') {
+        openDrawer(id)
+        setWidth(id, DEFAULT_WIDTH)
+      }
     }
   }
 
