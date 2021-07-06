@@ -7,6 +7,6 @@ const DEFAULT_OPTIONS = { ssl: { sslmode: 'require', rejectUnauthorized: false  
 
 export const getDb = (options) => pg()({
   connectionString: process.env.DATABASE_URL,
-  ...DEFAULT_OPTIONS,
+  // ...DEFAULT_OPTIONS,
   ...options
 });
