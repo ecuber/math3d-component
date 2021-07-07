@@ -4,7 +4,7 @@ import { loadDehydratedState } from 'store/actions'
 export function loadGraphFromDb(id) {
 
   return async dispatch => {
-    const dehydrated = await fetch('./myGraphs.json')
+    const dehydrated = await fetch('./myGraphs.json') // loads json file from public folder
       .then(res => res.json())
       .then(data => data)
 
