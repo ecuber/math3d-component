@@ -1,12 +1,15 @@
-import { getGraph } from 'services/api'
+// import { getGraph } from 'services/api'
 import { loadDehydratedState } from 'store/actions'
 
 export function loadGraphFromDb(id) {
 
   return async dispatch => {
-    const { dehydrated } = await getGraph(id)
-    if (dehydrated) {
-      const action = loadDehydratedState(dehydrated)
+    const dehydrated = await fetch('./myGraphs.json')
+      .then(res => res.json())
+      .then(data => data)
+
+    if (dehydrated[id]) {
+      const action = loadDehydratedState(dehydrated[id])
       return dispatch(action)
     }
     else {

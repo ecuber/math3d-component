@@ -40,7 +40,7 @@ render(
     <MathScopeProvider scopeEvaluator={scopeEvaluator} parser={parser}>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <App />
+          <App id='z6rPenvx'/>
         </BrowserRouter>
       </ThemeProvider>
     </MathScopeProvider>

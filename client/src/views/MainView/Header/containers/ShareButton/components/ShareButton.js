@@ -66,7 +66,7 @@ export default class ShareButton extends PureComponent<Props, State> {
     return randomstring.generate(8)
   }
 
-  // Updates camera data in parent state
+  // Saves camera data in parent state
   saveCameraData = () => {
     const { position, lookAt } = getCameraData()
     const id = 'camera'
@@ -77,13 +77,11 @@ export default class ShareButton extends PureComponent<Props, State> {
 
   saveGraph = () => {
     this.saveCameraData()
-    const creationDate = JSON.stringify(new Date())
-    const state = this.props.getState()
+    const state = this.props.getState() // loads scene state from parent (including newly updated camera stuff)
     const dehydrated = dehydrate(state)
-    console.log('dehydrated', dehydrated)
+    const lastUpdated = new Date()
     const id = this.state.id || this.getId()
-
-    const body = { id, dehydrated }
+    const body = { id, dehydrated, lastUpdated }
 
     fetch('dev/save', {
       method: 'POST',
