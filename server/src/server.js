@@ -1,45 +1,46 @@
 import express from 'express'
-import { saveNewGraph, loadGraph } from './graph'
-import { wrapAsync } from './utils'
+import { wrapAsync } from './utils.js'
 import bodyParser from 'body-parser'
 import path from 'path'
-import { getDb, attachDb } from './database'
+import fs from 'fs'
 
-const STATIC_DIR = path.resolve(__dirname, '../../client/build')
+const JSON_PATH = './myGraphs.json'
 const PORT = process.env.PORT || 5000
 
-export function startServer() {
-  // will hold the db object
-  const app = express()
+const app = express()
 
-  // get json from request bodies
-  app.use(bodyParser.json())
+// get json from request bodies
+app.use(bodyParser.json())
 
-  // Priority serve any static files.
-  app.use(express.static(STATIC_DIR))
 
-  const db = getDb();
-  app.use(attachDb(db));
+app.listen(PORT, () => {
+  console.error(`Node cluster worker ${process.pid}: listening on port ${PORT}`)
+} )
 
-  app.listen(PORT, () => {
-    console.error(`Node cluster worker ${process.pid}: listening on port ${PORT}`)
-  } )
+app.post('/dev/save', (req, res) => {
+  console.log('hello!')
+  const graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
+  fs.writeFile(JSON_PATH, JSON.stringify({ ...graphs, [req.body.id]: req.body.dehydrated }), 'utf8', (err) => {
+    if (err) {
+      console.error(err)
+      res.sendStatus(500).json({ error: err })
+    } else {
+      console.log(`successfully wrote graph ${req.body.id} to file`)
+      res.sendStatus(200)
+    }
+  })
+})
 
-  app.post('/api/graph', saveNewGraph)
+app.get('/dev/get/:id', (req, res) => {
+  const graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
+  res.json(graphs[req.body.id])
+})
 
-  app.get('/api/graph/:id', wrapAsync(loadGraph))
+app.use(function(error, req, res, next) {
+  console.group()
+  console.warn('Server Error!')
+  console.warn(error)
+  console.groupEnd()
+  res.sendStatus(500).json( { error: error.message } )
+} )
 
-  app.use(function(error, req, res, next) {
-    console.group()
-    console.warn('Server Error!')
-    console.warn(error)
-    console.groupEnd()
-    res.status(500).json( { error: error.message } )
-  } )
-
-  // All remaining requests return the React app, so it can handle routing.
-  app.get('*', function(request, response) {
-    console.log('BACKUP ROUTE:')
-    response.sendFile(path.resolve(STATIC_DIR, 'index.html'));
-  } )
-}

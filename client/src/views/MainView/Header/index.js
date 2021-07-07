@@ -37,15 +37,14 @@ const Header = () => {
         <TitleInput />
       </HeaderGroup>
       <HeaderGroup>
-        <HeaderMenu>
-          <Item><ExamplesButton /></Item>
-          {/** TODO: update save button styles */}
-          {
+        {/** TODO: update save button styles */}
+        {
             process.env.NODE_ENV === 'development' &&
-            <Item><ShareButton getState={store.getState}/></Item>
+            <ShareButton getState={store.getState}/>
           }
-          {/* <Item><HelpButton/></Item> */}
-        </HeaderMenu>
+        {/* <HeaderMenu>
+          <Item><ExamplesButton /></Item>
+        </HeaderMenu> */}
       </HeaderGroup>
     </HeaderContainer>
   )

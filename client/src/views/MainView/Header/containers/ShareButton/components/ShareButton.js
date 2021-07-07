@@ -28,10 +28,10 @@ const fadeIn = keyframes`
   from { opacity: 0 }
   to { opacity: 1 }
 `
-const CopyStatus = styled.div`
-  font-size: 125%;
-  width: 75px;
-  margin: 10px;
+const SaveStatus = styled.div`
+  font-size: 100%;
+  width: 100%;
+  margin: 5px;
   color: ${props => props.theme.primary[4]};
   font-weight: strong;
   visibility: ${props => props.isVisible ? 'visible' : 'hidden'};
@@ -50,18 +50,14 @@ type Props = {
 }
 type State = {
   id: ?string,
-  isCopied: boolean
+  isSaved: boolean
 }
-
-const URL_FRONT = process.env.NODE_ENV === 'development'
-  ? 'http://localhost:3000'
-  : 'https://www.math3d.org'
 
 export default class ShareButton extends PureComponent<Props, State> {
 
   state = {
     id: null,
-    isCopied: false
+    isSaved: false
   }
 
   dehydratedJson: ?string
@@ -70,6 +66,7 @@ export default class ShareButton extends PureComponent<Props, State> {
     return randomstring.generate(8)
   }
 
+  // Updates camera data in parent state
   saveCameraData = () => {
     const { position, lookAt } = getCameraData()
     const id = 'camera'
@@ -80,60 +77,63 @@ export default class ShareButton extends PureComponent<Props, State> {
 
   saveGraph = () => {
     this.saveCameraData()
-    this.props.setCreationDate()
+    const creationDate = JSON.stringify(new Date())
     const state = this.props.getState()
     const dehydrated = dehydrate(state)
-    console.log('dehydrated client', dehydrated)
-    const id = this.getId()
-    saveGraph(id, dehydrated)
-    this.setState( { id } )
-    this.dehydratedJson = JSON.stringify(dehydrated)
-  }
+    console.log('dehydrated', dehydrated)
+    const id = this.state.id || this.getId()
 
-  onCopy = () => {
-    this.setState( { isCopied: true } )
+    const body = { id, dehydrated }
+
+    fetch('dev/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+
+    this.dehydratedJson = JSON.stringify(dehydrated)
+    this.setState( { id } )
+    // post to localhost webserver??
   }
 
   onVisibleChange = (visible: boolean) => {
     if (!visible) {
-      this.setState( { isCopied: false } )
     }
   }
 
   renderContent() {
     // const url = this.state.id && `${URL_FRONT}/${this.state.id}`
-    return (
-      <SharePopoverContainer>
-        <label for='scene-id'>
-          Scene ID
-        </label>
-        <Input id='scene-id' readOnly={true} value={this.state.id}/>
-        <Button type='primary' style={copyButtonStyle} >Save Scene to Project</Button>
+    return (<>
+        <SaveStatus isVisible={true}>
+          <strong>Graph saved.</strong> (scene ID: {this.state.id})
+        </SaveStatus>
         {
-          // process.env.NODE_ENV === 'development' && (
-          //   <CopyToClipboard text={this.dehydratedJson}>
-          //     <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
-          //   </CopyToClipboard>
-          // )
+          process.env.NODE_ENV === 'development' && (
+            <CopyToClipboard text={this.dehydratedJson}>
+              <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
+            </CopyToClipboard>
+          )
         }
-
-      </SharePopoverContainer>
+      </>
     )
   }
 
   render() {
     return (
       <PopModal
-        title={'Save your scene'}
+        // TODO: add "last saved at hh:mm indicator?"
         onVisibleChange={this.onVisibleChange}
         source={
-          <span
+          <Button
+            style={{ padding:'6px 6px 6px 8px', width:'100%', height:'100%'}}
             onPointerDown={this.saveCameraData}
             onClick={this.saveGraph}
           >
-            <Icon type='save' style={ { paddingRight: '4px' } } />
-            Save Graph (Dev Only)
-          </span>
+            <Icon type='save' style={ { paddingRight: '4px'  } } />
+            Save Graph
+          </Button>
         }
       >
         {this.renderContent()}
