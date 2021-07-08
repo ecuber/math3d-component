@@ -6,7 +6,6 @@
 	},
   "plugins": ["jest", "flowtype"],
 	"extends": [
-    "standard",
     "plugin:jest/recommended",
     "plugin:react/recommended",
     "plugin:flowtype/recommended"

@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import MathObjectUI from 'containers/MathObjects/MathObjectUI'
-import { MainRow } from 'containers/MathObjects/components'
+import MathObjectUI from '../../../MathObjectUI'
+import { MainRow } from '../../../components'
 import {
   MathInputLHS,
   MathInputRHS,
   StaticMathStyled
-} from 'containers/MathObjects/containers/MathInput'
+} from '../../../containers/MathInput'
 import { VARIABLE } from '../metadata'
 
 export default class Variable extends PureComponent {

@@ -1,7 +1,7 @@
 import {
   toggleProperty,
   setProperty
-} from 'containers/MathObjects/actions'
+} from '../actions'
 import { FOLDER } from './metadata'
 
 export const setContentCollapsed = (id, value) => {

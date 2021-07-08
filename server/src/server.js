@@ -5,7 +5,7 @@ import path from 'path'
 import fs from 'fs'
 import { createContext } from 'vm'
 
-const JSON_PATH = '../client/public/myGraphs.json'
+const JSON_PATH = '../app/src/myGraphs.json'
 const PORT = process.env.PORT || 5000
 
 const app = express()
@@ -19,8 +19,15 @@ app.listen(PORT, () => {
 } )
 
 app.post('/dev/save', (req, res) => {
-  console.log('hello!')
-  const graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
+  let graphs
+  // create graphs if necessary
+  try {
+    graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
+  } catch(err) {
+    fs.appendFileSync(JSON_PATH, '{}')
+    graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
+  }
+
   fs.writeFile(JSON_PATH, JSON.stringify({ ...graphs, [req.body.id]: req.body.dehydrated }), 'utf8', (err) => {
     if (err) {
       next(err)

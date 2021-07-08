@@ -4,4 +4,4 @@ import $ from 'jquery'
 global.$ = global.jQuery = $
 
 // load mathquill after jQuery; need require instead of import
-require('utils/testing/mathquill_for_tests_only')
+require('./utils/testing/mathquill_for_tests_only')

@@ -30,6 +30,9 @@ import MainView from './views/MainView'
 
 // }
 
-const App = props => <MainView graphId={props.id}/>
+// const App = props => <MainView graphId={props.id}/>
+const App = props => {
+  return <MainView dehydrated={props.dehydrated}/>
+}
 
 export default App

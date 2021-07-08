@@ -1,22 +1,23 @@
 // @flow
 import React, { PureComponent } from 'react'
-import FlexContainer from 'components/FlexContainer'
+import FlexContainer from '../../components/FlexContainer'
 import UserControls from './UserControls'
 import Scene from './Scene'
 import Examples from './Examples'
 import Header from './Header'
 import { loadGraphFromDb } from './actions'
-import { loadDehydratedState } from 'store/actions'
-import initialState from 'store/initialState'
+import { loadDehydratedState } from '../../store/actions'
+import initialState from '../../store/initialState'
 import { connect } from 'react-redux'
-import { setLastSavedState } from 'services/lastSavedState/actions'
+import { setLastSavedState } from '../../services/lastSavedState/actions'
 
 type OwnProps = {|
   graphId?: string
 |}
 
 type DispatchProps = {|
-  loadGraphFromDb: (id: string) => Function,
+  // loadGraphFromDb: (id: string) => Function,
+  loadGraphFromDb: (dehydrated: any) => Function,
   setLastSavedState: typeof setLastSavedState,
   loadDehydratedState: (dehydrated: {} ) => void
 |}
@@ -29,8 +30,10 @@ type Props = {|
 class MainView extends PureComponent<Props> {
 
   componentDidMount() {
-    if (this.props.graphId) {
-      this.props.loadGraphFromDb(this.props.graphId)
+    console.log(this.props)
+    if (this.props.dehydrated) {
+      // this.props.loadGraphFromDb(this.props.graphId)
+      this.props.loadGraphFromDb(this.props.dehydrated)
     }
     this.props.setLastSavedState()
   }

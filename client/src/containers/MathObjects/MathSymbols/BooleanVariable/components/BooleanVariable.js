@@ -1,13 +1,13 @@
 // @flow
 import React, { PureComponent } from 'react'
 import { Switch } from 'antd'
-import MathObjectUI from 'containers/MathObjects/MathObjectUI'
-import { MainRow, Cell, Label } from 'containers/MathObjects/components'
+import MathObjectUI from '../../../MathObjectUI'
+import { MainRow, Cell, Label } from '../../../components'
 import {
   MathInputLHS
-} from 'containers/MathObjects/containers/MathInput'
+} from '../../../containers/MathInput'
 import { BOOLEAN_VARIABLE } from '../metadata'
-import typeof { setProperty } from 'containers/MathObjects/actions'
+import typeof { setProperty } from '../../../actions'
 
 type Props = {
   id: string,
