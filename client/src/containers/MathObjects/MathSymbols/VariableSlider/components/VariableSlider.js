@@ -22,7 +22,7 @@ const limitStyle = { flex: 0 }
 type Props = {
   setProperty: SetProperty,
   id: string,
-  isAnimating: bool,
+  isAnimating: boolean,
   fps: number,
   baseAnimationDuration: number,
   speedMultiplier: number,
@@ -30,7 +30,7 @@ type Props = {
   manualValue?: string, // entered in MathQuill by user
   min: string,
   max: string,
-  setSliderValue: (id: string, value: number, previousValueIsManual: bool) => void,
+  setSliderValue: (id: string, value: number, previousValueIsManual: boolean) => void,
   ownEvalErrors: {},
   setError: SetError
 }

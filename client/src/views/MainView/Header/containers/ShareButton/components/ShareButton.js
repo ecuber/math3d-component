@@ -89,7 +89,7 @@ export default class ShareButton extends PureComponent<Props, State> {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
-    })
+    } )
 
     this.dehydratedJson = JSON.stringify(dehydrated)
     this.setState( { id } )
@@ -125,7 +125,7 @@ export default class ShareButton extends PureComponent<Props, State> {
         onVisibleChange={this.onVisibleChange}
         source={
           <Button
-            style={{ padding:'6px 6px 6px 8px', width:'100%', height:'100%'}}
+            style={{ padding:'6px 6px 6px 8px', width:'100%', height:'100%' }}
             onPointerDown={this.saveCameraData}
             onClick={this.saveGraph}
           >

@@ -60,13 +60,15 @@ export default function SortableList(props) {
             className={className}
             style={style}
           >
-            {props.items.length ? props.items.map((item, index) => (
+            {props.items.length
+? props.items.map((item, index) => (
               renderDraggableItem(
                 item,
                 renderItem,
                 { index, type: draggableType }
               )
-            )) : <EmptyListIndicator>Drag an object here to add it to this folder...</EmptyListIndicator>}
+            ))
+: <EmptyListIndicator>Drag an object here to add it to this folder...</EmptyListIndicator>}
             {provided.placeholder}
           </div>
         )

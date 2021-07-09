@@ -35,8 +35,8 @@ export class MathScopeProvider extends PureComponent {
     errorsDiff.deleted
       .filter(name => {
         // check that the symbol still exists; if it was deleted, we do not need to unset the error
-        return symbolIds.has(prevIdsByName[name])
-      })
+        return symbolIds.has(prevIdsByName[name] )
+      } )
       .forEach(name => {
         const errorData = new EvalErrorData(null)
         setError(prevIdsByName[name], 'value', errorData)

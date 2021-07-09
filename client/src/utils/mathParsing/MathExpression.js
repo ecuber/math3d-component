@@ -19,7 +19,7 @@ export default class MathExpression {
   string: string
   dependencies: Set<string> // direct dependencies!
   tree: Node
-  eval: ((scope:Scope) => Array<Evaluated>) | ((scope:Scope) => Evaluated)
+  eval: ((scope: Scope) => Array<Evaluated>) | ((scope: Scope) => Evaluated)
   name = null
 
   /**

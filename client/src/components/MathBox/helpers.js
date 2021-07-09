@@ -10,7 +10,7 @@ export function validateBoolean(value: mixed) {
   }
 }
 
-export function isEqualNumerically(obj1: mixed, obj2: mixed): bool {
+export function isEqualNumerically(obj1: mixed, obj2: mixed): boolean {
   if (obj1 === obj2) { return true }
   if (!(obj1 instanceof Array && obj2 instanceof Array)) { return false }
   if (obj1.length !== obj2.length) { return false }
@@ -36,7 +36,7 @@ export function isComplex(value: mixed) {
   return value instanceof math.type.Complex
 }
 
-export function isVector(value: mixed, numComponents: number, { real = true }: { real: boolean } = {}) {
+export function isVector(value: mixed, numComponents: number, { real = true }: { real: boolean } = {} ) {
   if (value instanceof Array) {
     if (value.length !== numComponents) { return false }
     return real ? value.every(x => isReal(x)) : value.every(x => isComplex(x))
@@ -44,8 +44,8 @@ export function isVector(value: mixed, numComponents: number, { real = true }: {
   return false
 }
 
-export function validateVector(value: mixed, numComponents: number, { real = true }: { real: boolean } = {}) {
-  if (isVector(value, numComponents, { real })) { return }
+export function validateVector(value: mixed, numComponents: number, { real = true }: { real: boolean } = {} ) {
+  if (isVector(value, numComponents, { real } )) { return }
   const type = real ? 'real ' : ''
   throw TypeError(`Expected value to be a ${numComponents}-component ${type}vector, but it is not.`)
 }
@@ -70,7 +70,7 @@ export function validateFunctionSignature(func: mixed, numInputs: number, numOut
     throw TypeError('Expected function to return a number, but it did not.')
   }
   if (numOutputs > 1) {
-    if (isVector(result, numOutputs, { real: false })) {
+    if (isVector(result, numOutputs, { real: false } )) {
       return
     }
     throw TypeError(`Expected function to return a vector of length ${numOutputs}, but it did not.`)

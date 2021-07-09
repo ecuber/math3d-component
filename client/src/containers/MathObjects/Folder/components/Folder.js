@@ -60,6 +60,7 @@ export default class Folder extends PureComponent {
             droppableType='FOLDER_ITEM'
             draggableType='FOLDER_ITEM'
             // this prevents dropping into collapsed folders
+            // eslint-disable-next-line react/prop-types
             isDropDisabled={props.isCollapsed || props.isDropDisabled}
             droppableId={props.id}
             items={props.items}

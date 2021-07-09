@@ -16,8 +16,7 @@ declare module "react-collapsible" {
     onOpening?: () => void,
     onClosing?: () => void,
     lazyRender?: boolean,
-    overflowWhenOpen?:
-      | "hidden"
+    overflowWhenOpen?: | "hidden"
       | "visible"
       | "auto"
       | "scroll"

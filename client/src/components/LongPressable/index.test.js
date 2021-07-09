@@ -28,7 +28,7 @@ function getDefaultProps() {
 
 describe('<LongPressable />', () => {
 
-  it('fires onLongPress and not onShortPress when long-pressed', async() => {
+  it('fires onLongPress and not onShortPress when long-pressed', async () => {
     const { onLongPress, onShortPress, longPressTime } = getDefaultProps()
     const defaultEvent = {
       clientX: 0,
@@ -43,7 +43,7 @@ describe('<LongPressable />', () => {
     expect(onLongPress).toHaveBeenCalledTimes(1)
   } )
 
-  it('fires onShortPress and not onLongPress when short-pressed', async() => {
+  it('fires onShortPress and not onLongPress when short-pressed', async () => {
     const { onLongPress, onShortPress, longPressTime } = getDefaultProps()
     const defaultEvent = {
       clientX: 0,
@@ -57,7 +57,7 @@ describe('<LongPressable />', () => {
     expect(onLongPress).toHaveBeenCalledTimes(0)
   } )
 
-  it('still fires onLongPress if pointer moves less than dragThreshold', async() => {
+  it('still fires onLongPress if pointer moves less than dragThreshold', async () => {
     const { onLongPress, onShortPress, longPressTime } = getDefaultProps()
     const dragThreshold = 5
     const defaultEvent = {
@@ -79,7 +79,7 @@ describe('<LongPressable />', () => {
     expect(onLongPress).toHaveBeenCalledTimes(1)
   } )
 
-  it('does not fire onLongPress if pointer moves more than dragThreshold', async() => {
+  it('does not fire onLongPress if pointer moves more than dragThreshold', async () => {
     const { onLongPress, onShortPress, longPressTime } = getDefaultProps()
     const dragThreshold = 5
     const defaultEvent = {

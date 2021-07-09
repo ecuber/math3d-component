@@ -247,6 +247,7 @@ function scaleToUnit(x: number, xMin: number, xMax: number) {
 }
 
 export class Camera extends AbstractMBC implements MathBoxComponent {
+
   // NOTE: MathBox seems to have some issues with orthographic cameras:
   // A type: "orthographic" key can be provided to the camera config during
   // mathbox initialization, but sprites are rendered upside-down.

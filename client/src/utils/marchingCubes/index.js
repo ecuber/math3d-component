@@ -51,6 +51,7 @@ class MarchingCube {
     return index
   }
 
+  // eslint-disable-next-line complexity
   getEdgePoint(edgeIndex) {
     if (this.edgePoints.has(edgeIndex)) {
       return this.edgePoints.get(edgeIndex)

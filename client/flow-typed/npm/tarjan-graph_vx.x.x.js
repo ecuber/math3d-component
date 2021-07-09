@@ -20,8 +20,8 @@ declare module 'tarjan-graph' {
     successors: Array<string>,
     index: number,
     lowLink: number,
-    onStack: bool,
-    visited: bool,
+    onStack: boolean,
+    visited: boolean,
     reset(): void
   }
 
@@ -33,7 +33,7 @@ declare module 'tarjan-graph' {
     addAndVerify(key: string, descendants: Array<string> | string): Graph,
     dfs(visitor: (Vertex) => void): void,
     getDescendants(string): Array<string>,
-    hasCycles(): bool,
+    hasCycles(): boolean,
     getStronglyConnectedComponents(): Array<Array<Vertex>>,
     getCycles(): Array<Array<Vertex>>,
     clone(): Graph,

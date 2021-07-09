@@ -5,6 +5,7 @@
 		"node": true
 	},
   "plugins": ["jest", "flowtype"],
+  "ignorePatterns": ["node_modules", "flow-typed", "src/utils/testing/*"],
 	"extends": [
     "plugin:jest/recommended",
     "plugin:react/recommended",

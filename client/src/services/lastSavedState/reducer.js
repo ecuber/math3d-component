@@ -6,10 +6,12 @@ const initialState = {
 
 export default (state = initialState, action) => {
   const { type, payload } = action
-  switch (type ) {
+  switch (type) {
+
     case SET_SAVED_STATE:
       return payload.state
     default:
       return state
-  }
+  
+}
 }

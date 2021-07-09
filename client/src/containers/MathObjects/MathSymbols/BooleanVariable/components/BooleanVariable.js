@@ -12,12 +12,12 @@ import typeof { setProperty } from '../../../actions'
 type Props = {
   id: string,
   setProperty: setProperty,
-  value: bool
+  value: boolean
 }
 
 export default class BooleanVariable extends PureComponent<Props> {
 
-  onChange = (value: bool) => {
+  onChange = (value: boolean) => {
     this.props.setProperty(this.props.id, BOOLEAN_VARIABLE, 'value', value)
   }
 

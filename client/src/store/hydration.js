@@ -70,13 +70,13 @@ function rehydrateMathObjects(dehydrated, initialStore, isFolders=false) {
 function dehydrateFolders(folders, initialFolders) {
   const partial = dehydrateMathObjects(folders, initialState.folders, true)
   return Object.fromEntries(
-    Object.entries(partial).filter(([key, value]) => !isEmpty(value))
+    Object.entries(partial).filter(( [key, value] ) => !isEmpty(value))
   )
 }
 
 function rehydrateFolders(sortableTree, folders, initialFolders) {
   const { root } = sortableTree
-  const emptyFolders = Object.fromEntries(root.map(id => [id, {}]))
+  const emptyFolders = Object.fromEntries(root.map(id => [id, {}] ))
   const toRehydrate = { ...emptyFolders, ...folders }
   return rehydrateMathObjects(toRehydrate, initialState.folders, true)
 }
@@ -122,7 +122,7 @@ export function dehydrate(state) {
   }
 
   const withoutEmpty = Object.fromEntries(
-    Object.entries(dehydrated).filter(([key, value]) => !isEmpty(value))
+    Object.entries(dehydrated).filter(( [key, value] ) => !isEmpty(value))
   )
 
   return withoutEmpty

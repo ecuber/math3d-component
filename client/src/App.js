@@ -1,5 +1,6 @@
 import React from 'react'
 import MainView from './views/MainView'
+import PropTypes from 'prop-types'
 // import { Switch, Route } from 'react-router-dom'
 
 // class App extends Component {
@@ -33,6 +34,10 @@ import MainView from './views/MainView'
 // const App = props => <MainView graphId={props.id}/>
 const App = props => {
   return <MainView dehydrated={props.dehydrated}/>
+}
+
+App.propTypes = {
+  dehydrated: PropTypes.object
 }
 
 export default App

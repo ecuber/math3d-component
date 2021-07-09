@@ -168,7 +168,7 @@ type JestJQueryMatchersType = {
   toHaveText(text: string | RegExp): void,
   toHaveData(key: string, val?: any): void,
   toHaveValue(val: any): void,
-  toHaveCss(css: {[key: string]: any}): void,
+  toHaveCss(css: {[key: string]: any} ): void,
   toBeChecked(): void,
   toBeDisabled(): void,
   toBeEmpty(): void,
@@ -210,7 +210,7 @@ type JestExtendedMatchersType = {
      * Use .toBeOneOf when checking if a value is a member of a given Array.
      * @param {Array.<*>} members
      */
-    toBeOneOf(members: any[]): void;
+    toBeOneOf(members: any[] ): void;
 
     /**
      * Use `.toBeNil` when checking a value is `null` or `undefined`.
@@ -238,13 +238,13 @@ type JestExtendedMatchersType = {
      * Use `.toIncludeAllMembers` when checking if an `Array` contains all of the same members of a given set.
      * @param {Array.<*>} members
      */
-    toIncludeAllMembers(members: any[]): void;
+    toIncludeAllMembers(members: any[] ): void;
 
     /**
      * Use `.toIncludeAnyMembers` when checking if an `Array` contains any of the members of a given set.
      * @param {Array.<*>} members
      */
-    toIncludeAnyMembers(members: any[]): void;
+    toIncludeAnyMembers(members: any[] ): void;
 
     /**
      * Use `.toSatisfyAll` when you want to use a custom matcher by supplying a predicate function that returns a `Boolean` for all values in an array.
@@ -347,21 +347,21 @@ type JestExtendedMatchersType = {
      *
      * @param {Array.<String>} keys
      */
-    toContainKeys(keys: string[]): void;
+    toContainKeys(keys: string[] ): void;
 
     /**
      * Use `.toContainAllKeys` when checking if an object only contains all of the provided keys.
      *
      * @param {Array.<String>} keys
      */
-    toContainAllKeys(keys: string[]): void;
+    toContainAllKeys(keys: string[] ): void;
 
     /**
      * Use `.toContainAnyKeys` when checking if an object contains at least one of the provided keys.
      *
      * @param {Array.<String>} keys
      */
-    toContainAnyKeys(keys: string[]): void;
+    toContainAnyKeys(keys: string[] ): void;
 
     /**
      * Use `.toContainValue` when checking if an object contains the provided value.
@@ -375,49 +375,49 @@ type JestExtendedMatchersType = {
      *
      * @param {Array.<*>} values
      */
-    toContainValues(values: any[]): void;
+    toContainValues(values: any[] ): void;
 
     /**
      * Use `.toContainAllValues` when checking if an object only contains all of the provided values.
      *
      * @param {Array.<*>} values
      */
-    toContainAllValues(values: any[]): void;
+    toContainAllValues(values: any[] ): void;
 
     /**
      * Use `.toContainAnyValues` when checking if an object contains at least one of the provided values.
      *
      * @param {Array.<*>} values
      */
-    toContainAnyValues(values: any[]): void;
+    toContainAnyValues(values: any[] ): void;
 
     /**
      * Use `.toContainEntry` when checking if an object contains the provided entry.
      *
      * @param {Array.<String, String>} entry
      */
-    toContainEntry(entry: [string, string]): void;
+    toContainEntry(entry: [string, string] ): void;
 
     /**
      * Use `.toContainEntries` when checking if an object contains all of the provided entries.
      *
      * @param {Array.<Array.<String, String>>} entries
      */
-    toContainEntries(entries: [string, string][]): void;
+    toContainEntries(entries: [string, string][] ): void;
 
     /**
      * Use `.toContainAllEntries` when checking if an object only contains all of the provided entries.
      *
      * @param {Array.<Array.<String, String>>} entries
      */
-    toContainAllEntries(entries: [string, string][]): void;
+    toContainAllEntries(entries: [string, string][] ): void;
 
     /**
      * Use `.toContainAnyEntries` when checking if an object contains at least one of the provided entries.
      *
      * @param {Array.<Array.<String, String>>} entries
      */
-    toContainAnyEntries(entries: [string, string][]): void;
+    toContainAnyEntries(entries: [string, string][] ): void;
 
     /**
      * Use `.toBeExtensible` when checking if an object is extensible.
@@ -480,7 +480,7 @@ type JestExtendedMatchersType = {
      *
      * @param {Array.<String>} substring
      */
-    toIncludeMultiple(substring: string[]): void;
+    toIncludeMultiple(substring: string[] ): void;
 };
 
 type JestExpectType = {
@@ -947,7 +947,7 @@ declare var expect: {
   /** The object that you want to make assertions against */
   (value: any): JestExpectType & JestPromiseType & EnzymeMatchersType & DomTestingLibraryType & JestJQueryMatchersType & JestExtendedMatchersType,
   /** Add additional Jasmine matchers to Jest's roster */
-  extend(matchers: { [name: string]: JestMatcher }): void,
+  extend(matchers: { [name: string]: JestMatcher } ): void,
   /** Add a module that formats application-specific data structures. */
   addSnapshotSerializer(pluginModule: JestPrettyFormatPlugin): void,
   assertions(expectedAssertions: number): void,

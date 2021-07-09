@@ -25,7 +25,7 @@ declare module "enzyme" {
     containsMatchingElement(node: React.Node): boolean,
     containsAllMatchingElements(nodes: NodeOrNodes): boolean,
     containsAnyMatchingElements(nodes: NodeOrNodes): boolean,
-    dive(option?: { context?: Object }): this,
+    dive(option?: { context?: Object } ): this,
     exists(): boolean,
     isEmptyRender(): boolean,
     matchesElement(node: React.Node): boolean,
@@ -54,7 +54,7 @@ declare module "enzyme" {
     key(): string,
     simulate(event: string, ...args: Array<any>): this,
     setState(state: {}, callback?: Function): this,
-    setProps(props: {}): this,
+    setProps(props: {} ): this,
     setContext(context: Object): this,
     instance(): React.Component<*, *>,
     update(): this,
@@ -92,7 +92,7 @@ declare module "enzyme" {
       options?: ?Object
     ): ShallowWrapper,
     equals(node: React.Node): boolean,
-    shallow(options?: { context?: Object }): ShallowWrapper,
+    shallow(options?: { context?: Object } ): ShallowWrapper,
     getElement(): React.Node,
     getElements(): Array<React.Node>
   }
@@ -118,7 +118,7 @@ declare module "enzyme" {
     configure(options: {
       Adapter?: any,
       disableLifecycleMethods?: boolean
-    }): void,
+    } ): void,
     render: typeof render,
     mount: typeof mount,
     shallow: typeof shallow,

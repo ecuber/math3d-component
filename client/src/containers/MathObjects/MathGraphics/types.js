@@ -11,8 +11,8 @@ type InputTypeData =
     }
   | {
       inputType: 'boolean',
-      defaultValue: bool,
-      generateRandomValue?: () => bool
+      defaultValue: boolean,
+      generateRandomValue?: () => boolean
     }
   | {
       inputType: 'text',

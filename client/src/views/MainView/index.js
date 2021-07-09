@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import { setLastSavedState } from '../../services/lastSavedState/actions'
 
 type OwnProps = {|
-  graphId?: string
+  dehydrated?: any
 |}
 
 type DispatchProps = {|
@@ -30,7 +30,6 @@ type Props = {|
 class MainView extends PureComponent<Props> {
 
   componentDidMount() {
-    console.log(this.props)
     if (this.props.dehydrated) {
       // this.props.loadGraphFromDb(this.props.graphId)
       this.props.loadGraphFromDb(this.props.dehydrated)
@@ -39,8 +38,8 @@ class MainView extends PureComponent<Props> {
   }
 
   componentDidUpdate() {
-    if (this.props.graphId) {
-      this.props.loadGraphFromDb(this.props.graphId)
+    if (this.props.dehydrated) {
+      this.props.loadGraphFromDb(this.props.dehydrated)
     }
     else {
       this.props.loadDehydratedState(initialState)

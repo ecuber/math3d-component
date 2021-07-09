@@ -118,7 +118,7 @@ declare module "antd" {
     disabled?: boolean,
     expandTrigger?: "click" | "hover",
     notFoundContent?: string,
-    onChange?: (values: string[]) => mixed,
+    onChange?: (values: string[] ) => mixed,
     options: CascaderOption[],
     placeholder?: string,
     popupClassName?: string,
@@ -171,7 +171,7 @@ declare module "antd" {
   declare type ValidateCallback = (erros: mixed, values: mixed) => void;
   declare type GetFieldDecoratorOptions = {
     exclusive?: boolean,
-    getValueFromEvent?: (...args: mixed[]) => mixed,
+    getValueFromEvent?: (...args: mixed[] ) => mixed,
     initialValue?: mixed,
     normalize?: (value: mixed, prevValue: mixed, allValues: mixed) => mixed,
     rules?: ValidationRule[],
@@ -304,12 +304,12 @@ declare module "antd" {
   declare export class LocaleProvider extends React$Component<{}> {}
 
   declare export type MenuProps = {
-    onClick?: ({
+    onClick?: ( {
       domEvent: SyntheticMouseEvent<HTMLElement>,
       item: React$Component<MenuItem>,
       key: string,
       keyPath: string[]
-    }) => mixed
+    } ) => mixed
   };
 
   declare export class Menu extends React$Component<MenuProps> {
@@ -322,11 +322,11 @@ declare module "antd" {
   declare class MenuSubMenu extends React$Component<{}> {}
 
   declare export class message {
-    static config({
+    static config( {
       duration?: number,
       getContainer?: () => HTMLElement,
       top?: number
-    }): void;
+    } ): void;
     static success: messageFn<mixed>;
     static error: messageFn<mixed>;
     static info: messageFn<mixed>;
@@ -357,7 +357,7 @@ declare module "antd" {
     pageSizeOptions?: string[],
     showQuickJumper?: boolean,
     showSizeChanger?: boolean,
-    showTotal?: (total: number, range: number[]) => React$Node,
+    showTotal?: (total: number, range: number[] ) => React$Node,
     simple?: boolean,
     size?: string,
     total?: number,
@@ -393,7 +393,7 @@ declare module "antd" {
     overflow?: {| adjustX?: boolean, adjustY?: boolean |},
     useCssRight?: boolean,
     useCssBottom?: boolean,
-    useCssTransform:? boolean
+    useCssTransform: ? boolean
   |}
 
   declare export type PopconfirmProps = {
@@ -464,8 +464,7 @@ declare module "antd" {
     current?: number,
     direction?: "horizontal" | "vertical",
     labelPlacement?: "horizontal" | "vertical",
-    progressDot?:
-      | boolean
+    progressDot?: | boolean
       | ((
           iconDot: React$Node,
           {

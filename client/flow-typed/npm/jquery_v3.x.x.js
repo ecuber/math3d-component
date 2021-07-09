@@ -269,7 +269,7 @@ declare class JQueryCallback {
    *
    * @param callbacks A function, or array of functions, that are to be added to the callback list.
    */
-  add(callbacks: Function[]): JQueryCallback;
+  add(callbacks: Function[] ): JQueryCallback;
 
   /**
    * Disable a callback list from doing anything more.
@@ -291,7 +291,7 @@ declare class JQueryCallback {
    *
    * @param arguments The argument or list of arguments to pass back to the callback list.
    */
-  fire(...arguments: any[]): JQueryCallback;
+  fire(...arguments: any[] ): JQueryCallback;
 
   /**
    * Determine if the callbacks have already been called at least once.
@@ -304,7 +304,7 @@ declare class JQueryCallback {
    * @param context A reference to the context in which the callbacks in the list should be fired.
    * @param arguments An argument, or array of arguments, to pass to the callbacks in the list.
    */
-  fireWith(context?: any, args?: any[]): JQueryCallback;
+  fireWith(context?: any, args?: any[] ): JQueryCallback;
 
   /**
    * Determine whether a supplied callback is in a list
@@ -334,7 +334,7 @@ declare class JQueryCallback {
    *
    * @param callbacks A function, or array of functions, that are to be removed from the callback list.
    */
-  remove(callbacks: Function[]): JQueryCallback;
+  remove(callbacks: Function[] ): JQueryCallback;
 }
 
 /**
@@ -348,9 +348,9 @@ declare class JQueryGenericPromise<T> {
    * @param failFilter An optional function that is called when the Deferred is rejected.
    */
   then<U>(
-    doneFilter: (value?: T, ...values: any[]) => U | JQueryPromise<U>,
-    failFilter?: (...reasons: any[]) => any,
-    progressFilter?: (...progression: any[]) => any
+    doneFilter: (value?: T, ...values: any[] ) => U | JQueryPromise<U>,
+    failFilter?: (...reasons: any[] ) => any,
+    progressFilter?: (...progression: any[] ) => any
   ): JQueryPromise<U>;
 
   /**
@@ -360,9 +360,9 @@ declare class JQueryGenericPromise<T> {
    * @param failFilter An optional function that is called when the Deferred is rejected.
    */
   then(
-    doneFilter: (value?: T, ...values: any[]) => void,
-    failFilter?: (...reasons: any[]) => any,
-    progressFilter?: (...progression: any[]) => any
+    doneFilter: (value?: T, ...values: any[] ) => void,
+    failFilter?: (...reasons: any[] ) => any,
+    progressFilter?: (...progression: any[] ) => any
   ): JQueryPromise<void>;
 }
 
@@ -370,15 +370,13 @@ declare class JQueryGenericPromise<T> {
  * Interface for the JQuery promise/deferred callbacks
  */
 declare interface JQueryPromiseCallback<T> {
-  (value?: T, ...args: any[]): void;
+  (value?: T, ...args: any[] ): void;
 }
 
 declare class JQueryPromiseOperator<T, U> {
   (
     callback1: JQueryPromiseCallback<T> | JQueryPromiseCallback<T>[],
-    ...callbacksN: Array<
-      JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]
-    >
+    ...callbacksN: Array<JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]>
   ): JQueryPromise<U>;
 }
 
@@ -398,9 +396,7 @@ declare class JQueryPromise<T> extends JQueryGenericPromise<T> {
    */
   always(
     alwaysCallback1?: JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[],
-    ...alwaysCallbacksN: Array<
-      JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]
-    >
+    ...alwaysCallbacksN: Array<JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]>
   ): JQueryPromise<T>;
   /**
    * Add handlers to be called when the Deferred object is resolved.
@@ -410,9 +406,7 @@ declare class JQueryPromise<T> extends JQueryGenericPromise<T> {
    */
   done(
     doneCallback1?: JQueryPromiseCallback<T> | JQueryPromiseCallback<T>[],
-    ...doneCallbackN: Array<
-      JQueryPromiseCallback<T> | JQueryPromiseCallback<T>[]
-    >
+    ...doneCallbackN: Array<JQueryPromiseCallback<T> | JQueryPromiseCallback<T>[]>
   ): JQueryPromise<T>;
   /**
    * Add handlers to be called when the Deferred object is rejected.
@@ -422,9 +416,7 @@ declare class JQueryPromise<T> extends JQueryGenericPromise<T> {
    */
   fail(
     failCallback1?: JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[],
-    ...failCallbacksN: Array<
-      JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]
-    >
+    ...failCallbacksN: Array<JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]>
   ): JQueryPromise<T>;
   /**
    * Add handlers to be called when the Deferred object generates progress notifications.
@@ -434,9 +426,7 @@ declare class JQueryPromise<T> extends JQueryGenericPromise<T> {
   progress(
     progressCallback1?: | JQueryPromiseCallback<any>
     | JQueryPromiseCallback<any>[],
-    ...progressCallbackN: Array<
-      JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]
-    >
+    ...progressCallbackN: Array<JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]>
   ): JQueryPromise<T>;
 
   // Deprecated - given no typings
@@ -463,9 +453,7 @@ declare class JQueryDeferred<T> extends JQueryGenericPromise<T> {
    */
   always(
     alwaysCallback1?: JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[],
-    ...alwaysCallbacksN: Array<
-      JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]
-    >
+    ...alwaysCallbacksN: Array<JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]>
   ): JQueryDeferred<T>;
   /**
    * Add handlers to be called when the Deferred object is resolved.
@@ -475,9 +463,7 @@ declare class JQueryDeferred<T> extends JQueryGenericPromise<T> {
    */
   done(
     doneCallback1?: JQueryPromiseCallback<T> | JQueryPromiseCallback<T>[],
-    ...doneCallbackN: Array<
-      JQueryPromiseCallback<T> | JQueryPromiseCallback<T>[]
-    >
+    ...doneCallbackN: Array<JQueryPromiseCallback<T> | JQueryPromiseCallback<T>[]>
   ): JQueryDeferred<T>;
   /**
    * Add handlers to be called when the Deferred object is rejected.
@@ -487,9 +473,7 @@ declare class JQueryDeferred<T> extends JQueryGenericPromise<T> {
    */
   fail(
     failCallback1?: JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[],
-    ...failCallbacksN: Array<
-      JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]
-    >
+    ...failCallbacksN: Array<JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]>
   ): JQueryDeferred<T>;
   /**
    * Add handlers to be called when the Deferred object generates progress notifications.
@@ -499,9 +483,7 @@ declare class JQueryDeferred<T> extends JQueryGenericPromise<T> {
   progress(
     progressCallback1?: | JQueryPromiseCallback<any>
     | JQueryPromiseCallback<any>[],
-    ...progressCallbackN: Array<
-      JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]
-    >
+    ...progressCallbackN: Array<JQueryPromiseCallback<any> | JQueryPromiseCallback<any>[]>
   ): JQueryDeferred<T>;
 
   /**
@@ -509,7 +491,7 @@ declare class JQueryDeferred<T> extends JQueryGenericPromise<T> {
    *
    * @param args Optional arguments that are passed to the progressCallbacks.
    */
-  notify(value?: any, ...args: any[]): JQueryDeferred<T>;
+  notify(value?: any, ...args: any[] ): JQueryDeferred<T>;
 
   /**
    * Call the progressCallbacks on a Deferred object with the given context and args.
@@ -517,21 +499,21 @@ declare class JQueryDeferred<T> extends JQueryGenericPromise<T> {
    * @param context Context passed to the progressCallbacks as the this object.
    * @param args Optional arguments that are passed to the progressCallbacks.
    */
-  notifyWith(context: any, value?: any[]): JQueryDeferred<T>;
+  notifyWith(context: any, value?: any[] ): JQueryDeferred<T>;
 
   /**
    * Reject a Deferred object and call any failCallbacks with the given args.
    *
    * @param args Optional arguments that are passed to the failCallbacks.
    */
-  reject(value?: any, ...args: any[]): JQueryDeferred<T>;
+  reject(value?: any, ...args: any[] ): JQueryDeferred<T>;
   /**
    * Reject a Deferred object and call any failCallbacks with the given context and args.
    *
    * @param context Context passed to the failCallbacks as the this object.
    * @param args An optional array of arguments that are passed to the failCallbacks.
    */
-  rejectWith(context: any, value?: any[]): JQueryDeferred<T>;
+  rejectWith(context: any, value?: any[] ): JQueryDeferred<T>;
 
   /**
    * Resolve a Deferred object and call any doneCallbacks with the given args.
@@ -539,7 +521,7 @@ declare class JQueryDeferred<T> extends JQueryGenericPromise<T> {
    * @param value First argument passed to doneCallbacks.
    * @param args Optional subsequent arguments that are passed to the doneCallbacks.
    */
-  resolve(value?: T, ...args: any[]): JQueryDeferred<T>;
+  resolve(value?: T, ...args: any[] ): JQueryDeferred<T>;
 
   /**
    * Resolve a Deferred object and call any doneCallbacks with the given context and args.
@@ -547,7 +529,7 @@ declare class JQueryDeferred<T> extends JQueryGenericPromise<T> {
    * @param context Context passed to the doneCallbacks as the this object.
    * @param args An optional array of arguments that are passed to the doneCallbacks.
    */
-  resolveWith(context: any, value?: T[]): JQueryDeferred<T>;
+  resolveWith(context: any, value?: T[] ): JQueryDeferred<T>;
 
   /**
    * Return a Deferred's Promise object.
@@ -925,7 +907,7 @@ declare class JQueryStatic {
    *
    * @param elementArray An array containing a set of DOM elements to wrap in a jQuery object.
    */
-  (elementArray: Element[]): JQuery;
+  (elementArray: Element[] ): JQuery;
 
   /**
    * Binds a function to be executed when the DOM has finished loading.
@@ -939,7 +921,7 @@ declare class JQueryStatic {
    *
    * @param object A plain object to wrap in a jQuery object.
    */
-  (object: {}): JQuery;
+  (object: {} ): JQuery;
 
   /**
    * Accepts a string containing a CSS selector which is then used to match a set of elements.
@@ -982,7 +964,7 @@ declare class JQueryStatic {
    * @param deferreds One or more Deferred objects, or plain JavaScript objects.
    */
   when<T>(
-    ...deferreds: Array<T | JQueryPromise<T> /* as JQueryDeferred<T> */>
+    ...deferreds: Array<T | JQueryPromise<T>>
   ): JQueryPromise<T>;
 
   /**
@@ -1044,7 +1026,7 @@ declare class JQueryStatic {
    * @param queueName A string containing the name of the queue. Defaults to fx, the standard effects queue.
    * @param newQueue An array of functions to replace the current queue contents.
    */
-  queue(element: Element, queueName: string, newQueue: Function[]): JQuery;
+  queue(element: Element, queueName: string, newQueue: Function[] ): JQuery;
   /**
    * Manipulate the queue of functions to be executed on the matched element.
    *
@@ -1103,7 +1085,7 @@ declare class JQueryStatic {
    * @param additionalArguments Any number of arguments to be passed to the function referenced in the function argument.
    */
   proxy(
-    fnction: (...args: any[]) => any,
+    fnction: (...args: any[] ) => any,
     context: Object,
     ...additionalArguments: any[]
   ): any;
@@ -1114,7 +1096,7 @@ declare class JQueryStatic {
    * @param name The name of the function whose context will be changed (should be a property of the context object).
    * @param additionalArguments Any number of arguments to be passed to the function named in the name argument.
    */
-  proxy(context: Object, name: string, ...additionalArguments: any[]): any;
+  proxy(context: Object, name: string, ...additionalArguments: any[] ): any;
 
   Event: JQueryEventConstructor;
 
@@ -1170,7 +1152,7 @@ declare class JQueryStatic {
    * @param object1 An object containing additional properties to merge in.
    * @param objectN Additional objects containing properties to merge in.
    */
-  extend(target: any, object1?: any, ...objectN: any[]): any;
+  extend(target: any, object1?: any, ...objectN: any[] ): any;
   /**
    * Merge the contents of two or more objects together into the first object.
    *
@@ -1179,7 +1161,7 @@ declare class JQueryStatic {
    * @param object1 An object containing additional properties to merge in.
    * @param objectN Additional objects containing properties to merge in.
    */
-  extend(deep: boolean, target: any, object1?: any, ...objectN: any[]): any;
+  extend(deep: boolean, target: any, object1?: any, ...objectN: any[] ): any;
 
   /**
    * Execute some JavaScript code globally.
@@ -1284,7 +1266,7 @@ declare class JQueryStatic {
    * @param first The first array to merge, the elements of second added.
    * @param second The second array to merge into the first, unaltered.
    */
-  merge<T>(first: T[], second: T[]): T[];
+  merge<T>(first: T[], second: T[] ): T[];
 
   /**
    * An empty function.
@@ -1329,7 +1311,7 @@ declare class JQueryStatic {
    *
    * @param array The Array of DOM elements.
    */
-  unique(array: Element[]): Element[];
+  unique(array: Element[] ): Element[];
 
   /**
    * Parses a string into an array of DOM nodes.
@@ -1801,7 +1783,7 @@ declare class JQuery {
    */
   data(obj: {
     [key: string]: any
-  }): JQuery;
+  } ): JQuery;
   /**
    * Return the value: any at the named data store for the first element in the jQuery collection, as set by data(name, value) or by an HTML5 data-* attribute.
    */
@@ -1825,7 +1807,7 @@ declare class JQuery {
    *
    * @param list An array of strings naming the pieces of data to delete.
    */
-  removeData(list: string[]): JQuery;
+  removeData(list: string[] ): JQuery;
   /**
    * Remove all previously-stored piece of data.
    */
@@ -2658,7 +2640,7 @@ declare class JQuery {
    */
   off(
     events: string,
-    handler: (eventObject: JQueryEventObject, ...args: any[]) => any
+    handler: (eventObject: JQueryEventObject, ...args: any[] ) => any
   ): JQuery;
   /**
    * Remove an event handler.
@@ -2681,7 +2663,7 @@ declare class JQuery {
    */
   on(
     events: string,
-    handler: (eventObject: JQueryEventObject, ...args: any[]) => any
+    handler: (eventObject: JQueryEventObject, ...args: any[] ) => any
   ): JQuery;
   /**
    * Attach an event handler function for one or more events to the selected elements.
@@ -2693,7 +2675,7 @@ declare class JQuery {
   on(
     events: string,
     data: any,
-    handler: (eventObject: JQueryEventObject, ...args: any[]) => any
+    handler: (eventObject: JQueryEventObject, ...args: any[] ) => any
   ): JQuery;
   /**
    * Attach an event handler function for one or more events to the selected elements.
@@ -2705,7 +2687,7 @@ declare class JQuery {
   on(
     events: string,
     selector: string,
-    handler: (eventObject: JQueryEventObject, ...eventData: any[]) => any
+    handler: (eventObject: JQueryEventObject, ...eventData: any[] ) => any
   ): JQuery;
   /**
    * Attach an event handler function for one or more events to the selected elements.
@@ -2719,7 +2701,7 @@ declare class JQuery {
     events: string,
     selector: string,
     data: any,
-    handler: (eventObject: JQueryEventObject, ...eventData: any[]) => any
+    handler: (eventObject: JQueryEventObject, ...eventData: any[] ) => any
   ): JQuery;
   /**
    * Attach an event handler function for one or more events to the selected elements.
@@ -2935,7 +2917,7 @@ declare class JQuery {
    * @param eventType A string containing a JavaScript event type, such as click or submit.
    * @param extraParameters An array of additional parameters to pass along to the event handler.
    */
-  triggerHandler(eventType: string, ...extraParameters: any[]): Object;
+  triggerHandler(eventType: string, ...extraParameters: any[] ): Object;
 
   /**
    * Execute all handlers attached to an element for an event.
@@ -2943,7 +2925,7 @@ declare class JQuery {
    * @param event A jQuery.Event object.
    * @param extraParameters An array of additional parameters to pass along to the event handler.
    */
-  triggerHandler(event: JQueryEventObject, ...extraParameters: any[]): Object;
+  triggerHandler(event: JQueryEventObject, ...extraParameters: any[] ): Object;
 
   /**
    * Remove a previously-attached event handler from the elements.
@@ -3045,7 +3027,7 @@ declare class JQuery {
    *
    * @param elements An array of elements to push onto the stack and make into a new jQuery object.
    */
-  pushStack(elements: any[]): JQuery;
+  pushStack(elements: any[] ): JQuery;
   /**
    * Add a collection of DOM elements onto the jQuery stack.
    *
@@ -3053,7 +3035,7 @@ declare class JQuery {
    * @param name The name of a jQuery method that generated the array of elements.
    * @param arguments The arguments that were passed in to the jQuery method (for serialization).
    */
-  pushStack(elements: any[], name: string, arguments: any[]): JQuery;
+  pushStack(elements: any[], name: string, arguments: any[] ): JQuery;
 
   /**
    * Insert content, specified by the parameter, after each element in the set of matched elements.
@@ -3320,7 +3302,7 @@ declare class JQuery {
    *
    * @param elements One or more elements to add to the set of matched elements.
    */
-  add(...elements: Element[]): JQuery;
+  add(...elements: Element[] ): JQuery;
   /**
    * Add elements to the set of matched elements.
    *
@@ -3478,7 +3460,7 @@ declare class JQuery {
    *
    * @param elements One or more elements to match the current set of elements against.
    */
-  is(elements: Element | Element[]): boolean;
+  is(elements: Element | Element[] ): boolean;
 
   /**
    * Reduce the set of matched elements to the final one in the set.
@@ -3545,7 +3527,7 @@ declare class JQuery {
    *
    * @param elements One or more DOM elements to remove from the matched set.
    */
-  not(elements: Element | Element[]): JQuery;
+  not(elements: Element | Element[] ): JQuery;
   /**
    * Remove elements from the set of matched elements.
    *
@@ -3656,7 +3638,7 @@ declare class JQuery {
    *
    * @param newQueue An array of functions to replace the current queue contents.
    */
-  queue(newQueue: Function[]): JQuery;
+  queue(newQueue: Function[] ): JQuery;
   /**
    * Manipulate the queue of functions to be executed, once for each matched element.
    *
@@ -3669,7 +3651,7 @@ declare class JQuery {
    * @param queueName A string containing the name of the queue. Defaults to fx, the standard effects queue.
    * @param newQueue An array of functions to replace the current queue contents.
    */
-  queue(queueName: string, newQueue: Function[]): JQuery;
+  queue(queueName: string, newQueue: Function[] ): JQuery;
   /**
    * Manipulate the queue of functions to be executed, once for each matched element.
    *

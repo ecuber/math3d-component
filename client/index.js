@@ -27,7 +27,8 @@ const Math3D = (props) => {
         </ThemeProvider>
       </MathScopeProvider>
     </Provider>
-)}
+  )
+}
 
 Math3D.propTypes = {
   dehydrated: PropTypes.object

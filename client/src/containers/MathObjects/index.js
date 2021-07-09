@@ -6,7 +6,7 @@ import type { MathObjectWrapper } from './MathObject'
 
 export { Folder, MathGraphics, MathSymbols }
 
-const mathObjects : { [string]: MathObjectWrapper } = {
+const mathObjects: { [string]: MathObjectWrapper } = {
   [Folder.type]: Folder,
   ...MathSymbols,
   ...MathGraphics

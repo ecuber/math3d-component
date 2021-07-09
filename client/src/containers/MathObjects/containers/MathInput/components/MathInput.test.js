@@ -174,7 +174,7 @@ describe('MathInput error persistence handling', () => {
   // isErrorPersistent flag is intended to avoid emphemeral errors that occur
   // while typing expressions
 
-  it('waits until edits stop happening to display error IF originally valid', async() => {
+  it('waits until edits stop happening to display error IF originally valid', async () => {
     const wrapper = shallowMathInput()
     expect(wrapper.state('isPersistentError')).toBe(false)
 
@@ -190,7 +190,7 @@ describe('MathInput error persistence handling', () => {
     expect(wrapper.state('isPersistentError')).toBe(true)
   } )
 
-  it('immediately hides error when error stops happening', async() => {
+  it('immediately hides error when error stops happening', async () => {
     const wrapper = shallowMathInput()
     expect(wrapper.state('isPersistentError')).toBe(false)
 
