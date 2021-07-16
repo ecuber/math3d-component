@@ -5,7 +5,7 @@
 		"node": true
 	},
   "plugins": ["jest", "flowtype"],
-  "ignorePatterns": ["node_modules", "flow-typed", "src/utils/testing/*"],
+  "ignorePatterns": ["node_modules", "flow-typed/*", "src/utils/testing/*", "dist"],
 	"extends": [
     "plugin:jest/recommended",
     "plugin:react/recommended",
@@ -28,5 +28,10 @@
     }],
     "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
     "padded-blocks": ["error", {"classes": "always", "switches": "always"}]
-	}
+	},
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
