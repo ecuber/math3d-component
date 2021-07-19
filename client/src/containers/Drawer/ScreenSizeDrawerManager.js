@@ -13,6 +13,7 @@ type DispatchProps = {|
 |}
 type OwnProps = {|
   isSmall: boolean,
+  drawerDefault: boolean,
   id: string
 |}
 type Props = {|
@@ -23,13 +24,14 @@ type Props = {|
 class ScreenSizeDrawerManager extends React.PureComponent<Props> {
 
   resize() {
-    const { id, isSmall, closeDrawer, openDrawer, setWidth } = this.props
+    const { id, isSmall, closeDrawer, openDrawer, setWidth, drawerDefault } = this.props
     if (isSmall) {
       closeDrawer(id)
       setWidth(id, '290px')
     }
     else {
-      if (process.env.NODE_ENV === 'development') {
+      console.log(this.props.drawerDefault)
+      if ('default drawer: ', this.props.drawerDefault) { // CUSTOM_FUNCTIONALITY
         openDrawer(id)
         setWidth(id, DEFAULT_WIDTH)
       }

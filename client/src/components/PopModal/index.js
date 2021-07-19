@@ -3,10 +3,6 @@ import * as React from 'react'
 import { Popover, Modal, Button } from 'antd'
 import withSizes from 'react-sizes'
 
-require('react-dom');
-window.React2 = require('react');
-console.log(window.React1 === window.React2);
-
 type Props = {
   useModal: boolean,
   children: React.Node,

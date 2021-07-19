@@ -12,7 +12,10 @@ import { connect } from 'react-redux'
 import { setLastSavedState } from '../../services/lastSavedState/actions'
 
 type OwnProps = {|
-  dehydrated?: any
+  dehydrated?: any,
+  drawerDefault?: boolean,
+  width?: String,
+  height?: String
 |}
 
 type DispatchProps = {|
@@ -47,10 +50,13 @@ class MainView extends PureComponent<Props> {
   }
 
   render() {
+    const showButton = this.props.drawerDefault !== undefined
+      ? this.props.drawerDefault
+      : false
     return <FlexContainer style={ { overflow: 'hidden', flexDirection: 'column' } }>
-      <Header />
+      <Header showButton={showButton} />
       <FlexContainer>
-        <UserControls />
+        <UserControls drawerDefault={this.props.drawerDefault} />
         <Scene />
         <Examples />
       </FlexContainer>

@@ -22,7 +22,7 @@ const Math3D = (props) => {
         <MathScopeProvider scopeEvaluator={scopeEvaluator} parser={parser}>
           <ThemeProvider theme={theme}>
             <BrowserRouter>
-              <App dehydrated={props.dehydrated}/>
+              <App dehydrated={props.dehydrated} drawerDefault={props.drawerDefault}/>
             </BrowserRouter>
           </ThemeProvider>
         </MathScopeProvider>
@@ -33,6 +33,7 @@ const Math3D = (props) => {
 
 Math3D.propTypes = {
   dehydrated: PropTypes.object,
+  drawerDefault: PropTypes.bool,
   width: PropTypes.string,
   height: PropTypes.string
 }

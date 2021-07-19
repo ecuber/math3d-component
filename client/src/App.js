@@ -1,43 +1,17 @@
 import React from 'react'
 import MainView from './views/MainView'
 import PropTypes from 'prop-types'
-// import { Switch, Route } from 'react-router-dom'
-
-// class App extends Component {
-
-//   legacyReRoute( { match } ) {
-//     // Redirect users to the old site
-//     window.location = `https://math3d.herokuapp.com/graph/${match.params.id}`
-//   }
-
-//   renderGraph( { match } ) {
-//     return (
-//       <MainView graphId={match.params.id}/>
-//     )
-//   }
-
-//   render() {
-//     // NOTE: I tried path='/load/:graph' for the routes, but got strange errors
-//     // that are possibly related to hacky mathbox imports.
-//     // This seems to work...
-//     return (
-//       <Switch>
-//         <Route exact path='/graph/:id' render={this.legacyReRoute}/>
-//         <Route exact path='/:id' render={this.renderGraph}/>
-//         <Route exact path='/' render={this.renderGraph}/>
-//       </Switch>
-//     )
-//   }
-
-// }
 
 // const App = props => <MainView graphId={props.id}/>
 const App = props => {
-  return <MainView dehydrated={props.dehydrated}/>
+  return <MainView {...props} />
 }
 
 App.propTypes = {
-  dehydrated: PropTypes.object
+  dehydrated: PropTypes.object,
+  drawerDefault: PropTypes.bool,
+  width: PropTypes.string,
+  height: PropTypes.string
 }
 
 export default App

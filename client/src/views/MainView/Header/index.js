@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { HEADER_HEIGHT_PX } from '../../../constants'
 import ShareButton from './containers/ShareButton'
@@ -29,7 +30,8 @@ const HeaderGroup = styled.div`
   align-items:center;
 `
 
-const Header = () => {
+const Header = (props: { showButton: boolean } ) => {
+  const { showButton } = props
   return (
     <HeaderContainer>
       <HeaderGroup>
@@ -39,7 +41,7 @@ const Header = () => {
       <HeaderGroup>
         {/** TODO: update save button styles */}
         {
-            process.env.NODE_ENV === 'development' &&
+            props.showButton && // CUSTOM_FUNCTIOANLITY
             <ShareButton getState={store.getState}/>
           }
         {/* <HeaderMenu>
@@ -48,6 +50,10 @@ const Header = () => {
       </HeaderGroup>
     </HeaderContainer>
   )
+}
+
+Header.propTypes = {
+  showButton: PropTypes.bool
 }
 
 export default Header

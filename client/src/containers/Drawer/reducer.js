@@ -4,12 +4,12 @@ export const DEFAULT_WIDTH = '400px'
 
 export const initialState = {
   main: {
-    isVisible: process.env.NODE_ENV === 'development',
+    // isVisible: process.env.NODE_ENV === 'development', // CUSTOM_FUNCTIOANLITY
     isAnimating: false,
     width: DEFAULT_WIDTH
   },
   examples: {
-    isVisible: false,
+    // isVisible: false,
     isAnimating: false,
     width: DEFAULT_WIDTH
   }

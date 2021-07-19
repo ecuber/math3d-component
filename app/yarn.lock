@@ -7587,10 +7587,10 @@ material-colors@^1.2.1:
   resolved "https://registry.yarnpkg.com/material-colors/-/material-colors-1.2.6.tgz#6d1958871126992ceecc72f4bcc4d8f010865f46"
   integrity sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==
 
-math3d-component@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/math3d-component/-/math3d-component-1.1.1.tgz#a1cb40ace7d1594805676ce51defca6c7fbf9c26"
-  integrity sha512-zS9As+WQklq+IFFIwwLDTtGZKQt5NMtdGjenmga5bX8sjqHbx0uU8fEeOO4qdW9OjejhPZ5MT922iRFG/3QmvA==
+math3d-component@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/math3d-component/-/math3d-component-1.1.6.tgz#83b096990bb04a376e158ae3bf162f4245861143"
+  integrity sha512-kTRt8f/FlQv6lXoLbwq0LtP0+HHruP9WNRfNIUBM++8P9U4MzD42kQoshByMsEkCw/p8Y4YEv7o6/n4PjWB/2g==
   dependencies:
     antd "^3.15.0"
     babel-core "^7.0.0-beta.41"

@@ -45,6 +45,7 @@ type Props = {
   // We need access to state, but no need to rerender on ever state change.
   // So pass getState instead.
   getState: () => {},
+  visible: Boolean,
   setProperty: SetProperty,
   setCreationDate: SetCreationDate
 }
@@ -108,11 +109,9 @@ export default class ShareButton extends PureComponent<Props, State> {
           <strong>Graph saved.</strong> (scene ID: {this.state.id})
         </SaveStatus>
         {
-          process.env.NODE_ENV === 'development' && (
-            <CopyToClipboard text={this.dehydratedJson}>
-              <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
-            </CopyToClipboard>
-          )
+          <CopyToClipboard text={this.dehydratedJson}>
+            <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
+          </CopyToClipboard>
         }
       </>
     )
