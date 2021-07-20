@@ -30,8 +30,7 @@ class ScreenSizeDrawerManager extends React.PureComponent<Props> {
       setWidth(id, '290px')
     }
     else {
-      console.log(this.props.drawerDefault)
-      if ('default drawer: ', this.props.drawerDefault) { // CUSTOM_FUNCTIONALITY
+      if (this.props.drawerDefault) { // CUSTOM_FUNCTIONALITY
         openDrawer(id)
         setWidth(id, DEFAULT_WIDTH)
       }
