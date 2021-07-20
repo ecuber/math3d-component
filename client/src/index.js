@@ -11,18 +11,21 @@ import { scopeEvaluator, parser } from './constants/parsing'
 import theme from './constants/theme'
 
 import { ThemeProvider } from 'styled-components'
-
-// not sure where/why this is necessary but react is complaining
 import { BrowserRouter } from 'react-router-dom'
 
 const Math3D = (props) => {
   return (
-    <div style={{ width: props.width, height: props.height }}>
+    // TODO: test putting component in a resized parent div to see if it adapts to the container
+    <div style={{
+      height: '100%', // will be overwritten if given by props.style
+      width: '100%',
+      ...props.style
+    }}>
       <Provider store={store}>
         <MathScopeProvider scopeEvaluator={scopeEvaluator} parser={parser}>
           <ThemeProvider theme={theme}>
             <BrowserRouter>
-              <App dehydrated={props.dehydrated} drawerDefault={props.drawerDefault}/>
+              <App {...props}/>
             </BrowserRouter>
           </ThemeProvider>
         </MathScopeProvider>
@@ -33,9 +36,9 @@ const Math3D = (props) => {
 
 Math3D.propTypes = {
   dehydrated: PropTypes.object,
-  drawerDefault: PropTypes.bool,
-  width: PropTypes.string,
-  height: PropTypes.string
+  drawer: PropTypes.bool,
+  dev: PropTypes.bool,
+  style: PropTypes.object
 }
 
 export default Math3D

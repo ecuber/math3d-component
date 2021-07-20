@@ -52,7 +52,7 @@ export default class Drawer extends React.PureComponent {
   static propTypes = {
     id: PropTypes.string.isRequired,
     width: PropTypes.string.isRequired,
-    isOpen: PropTypes.bool.isRequired,
+    isOpen: PropTypes.bool,
     isAnimating: PropTypes.bool.isRequired,
     animationSpeed: PropTypes.string,
     onOpen: PropTypes.func.isRequired,

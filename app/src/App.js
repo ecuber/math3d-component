@@ -5,7 +5,7 @@ import graphs from './myGraphs.json'
 
 
 function App() {
-  return <Math3D height='100%' width='100%' drawerDefault={true} dehydrated={graphs.z6rPenvx}/>
+  return <Math3D drawer={true} dehydrated={graphs.z6rPenvx}/>
 }
 
 export default App

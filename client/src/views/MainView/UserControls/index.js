@@ -7,11 +7,11 @@ export default function UserControls(props) {
   return (
     <Fragment>
       <ControlsDrawer />
-      <ScreenSizeDrawerManager drawerDefault={props.drawerDefault} id='main'/>
+      <ScreenSizeDrawerManager drawer={props.drawer} id='main'/>
     </Fragment>
   )
 }
 
 UserControls.propTypes = {
-  drawerDefault: PropTypes.bool
+  drawer: PropTypes.bool
 }

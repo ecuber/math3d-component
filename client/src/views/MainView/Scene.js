@@ -6,16 +6,18 @@ import styled from 'styled-components'
 const SceneBoundary = styled.div`
   display:flex;
   height:100%;
+  width:100%;
   overflow: hidden;
   flex: 1;
 `
 
-export default class Math3dScene extends PureComponent {
+export default class Math3dScene extends PureComponent<{ height?: String, width?: String, containerWidth?: { current: any }, drawer: Boolean}> {
 
   render() {
+    // console.log('props: Scene.js', this.props)
     return (
       <SceneBoundary>
-        <MathBoxContainer mathboxElement={window.mathboxElement}>
+        <MathBoxContainer {...this.props} mathboxElement={window.mathboxElement}>
           <MathBoxScene />
         </MathBoxContainer>
       </SceneBoundary>

@@ -1,7 +1,7 @@
 var path = require('path')
 var externalReact = require('webpack-external-react')
 var webpack = require('webpack')
-var NODE_ENV = 'production'
+var NODE_ENV = 'development'
 
 module.exports = {
     mode: NODE_ENV,

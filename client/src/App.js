@@ -4,14 +4,17 @@ import PropTypes from 'prop-types'
 
 // const App = props => <MainView graphId={props.id}/>
 const App = props => {
-  return <MainView {...props} />
+  return <MainView {...{
+    height: props?.style?.height ?? '100%',
+    width: props?.style?.width ?? '100%',
+    ...props } } />
 }
 
 App.propTypes = {
   dehydrated: PropTypes.object,
-  drawerDefault: PropTypes.bool,
-  width: PropTypes.string,
-  height: PropTypes.string
+  drawer: PropTypes.bool,
+  dev: PropTypes.bool,
+  style: PropTypes.any
 }
 
 export default App

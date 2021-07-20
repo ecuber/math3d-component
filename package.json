@@ -1,23 +1,12 @@
 {
-  "name": "math3d",
-  "version": "1.2.9",
-  "description": "Express server for math3d-react app.",
+  "name": "math3d-component",
+  "version": "1.0.0",
+  "description": "Embedded math3d-react React component.",
   "engines": {
     "node": "14.1.x"
   },
   "scripts": {
-    "postinstall": "npm-run-all --parallel ci:server ci:client",
-    "ci:server": "npm --prefix ./server ci",
-    "ci:client": "npm --prefix ./client ci",
-    "install:dev": "npm-run-all --parallel install:dev:server install:dev:client",
-    "install:dev:server": "npm --prefix ./server --only=dev install",
-    "install:dev:client": "npm --prefix ./client --only=dev install",
-    "build": "npm-run-all --parallel build:server build:client",
-    "build:server": "npm --prefix ./server run build",
-    "build:client": "npm --prefix ./client run build",
-    "start": "npm --prefix ./server start",
-    "start:dev:server": "npm --prefix ./server run dev",
-    "start:dev:client": "npm --prefix ./client run start"
+    "start": "yarn --cwd ./server start & yarn --cwd ./app start"
   },
   "cacheDirectories": [
     "server/node_modules",
@@ -26,8 +15,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mars/heroku-cra-node.git"
-  },
-  "dependencies": {
-    "npm-run-all": "^4.1.5"
   }
 }

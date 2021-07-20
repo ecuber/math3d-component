@@ -1,5 +1,5 @@
 // @flow
-import React, { PureComponent } from 'react'
+import React, { useRef, useLayoutEffect, useEffect, useState } from 'react'
 import FlexContainer from '../../components/FlexContainer'
 import UserControls from './UserControls'
 import Scene from './Scene'
@@ -13,7 +13,8 @@ import { setLastSavedState } from '../../services/lastSavedState/actions'
 
 type OwnProps = {|
   dehydrated?: any,
-  drawerDefault?: boolean,
+  drawer?: boolean,
+  dev?: boolean,
   width?: String,
   height?: String
 |}
@@ -30,39 +31,39 @@ type Props = {|
   ...OwnProps
 |}
 
-class MainView extends PureComponent<Props> {
+function MainView(props: Props) {
 
-  componentDidMount() {
-    if (this.props.dehydrated) {
-      // this.props.loadGraphFromDb(this.props.graphId)
-      this.props.loadGraphFromDb(this.props.dehydrated)
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const [windowWidth, setWindowWidth] = useState(0)
+  
+  useLayoutEffect(() => {
+    if (props.dehydrated) {
+      // props.loadGraphFromDb(props.graphId)
+      props.loadGraphFromDb(props.dehydrated)
     }
-    this.props.setLastSavedState()
-  }
+    props.setLastSavedState()
+  } )
 
-  componentDidUpdate() {
-    if (this.props.dehydrated) {
-      this.props.loadGraphFromDb(this.props.dehydrated)
-    }
-    else {
-      this.props.loadDehydratedState(initialState)
-    }
-  }
+  useEffect(() => {
+    setWindowWidth(window.innerWidth)
+  }, [window] )
 
-  render() {
-    const showButton = this.props.drawerDefault !== undefined
-      ? this.props.drawerDefault
-      : false
-    return <FlexContainer style={ { overflow: 'hidden', flexDirection: 'column' } }>
-      <Header showButton={showButton} />
-      <FlexContainer>
-        <UserControls drawerDefault={this.props.drawerDefault} />
-        <Scene />
-        <Examples />
-      </FlexContainer>
+  const showButton = props.drawer !== undefined
+    ? props.drawer
+    : false
+
+  return <FlexContainer ref={containerRef} style={ { overflow: 'hidden', flexDirection: 'column' } }>
+    <Header showButton={showButton} />
+    <FlexContainer>
+      <UserControls dev={props.dev} drawer={props.drawer} />
+      <Scene
+        componentRef={containerRef}
+        drawer={props.drawer}
+        height={props.height}
+        width={props.width}/>
+      <Examples />
     </FlexContainer>
-  }
-
+  </FlexContainer>
 }
 
 const mapDispatchToProps = {
