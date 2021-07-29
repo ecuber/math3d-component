@@ -3,17 +3,17 @@ import React, { PureComponent } from 'react'
 import MathInput from './components/MathInput'
 import { connect } from 'react-redux'
 import { setPropertyAndError } from '../../actions'
-import { parser } from '../../../../constants/parsing'
+import { parser } from 'constants/parsing';
 import {
   isAssignmentLHS,
   isAssignment,
   isValidName
 } from './components/validators'
-import { setError } from '../../../../services/errors'
-import { getErrorMsg } from '../../../../services/errors/selectors'
+import { setError } from 'services/errors';
+import { getErrorMsg } from 'services/errors/selectors';
 import { getValidateNameAgainst, getMathObjectProp } from './selectors'
 
-import type { ErrorData } from '../../../../services/errors'
+import type { ErrorData } from 'services/errors';
 import type { OtherProps } from './components/MathInput'
 import type { Optionalize, OptionalizeSome } from '../../../../utils/flow'
 

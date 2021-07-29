@@ -2,13 +2,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { HEADER_HEIGHT_PX } from '../../../constants'
+import { HEADER_HEIGHT_PX } from 'constants';
 import ShareButton from './containers/ShareButton'
 import HeaderButton from './components/HeaderButton'
 import TitleInput from './containers/TitleInput'
 import HelpButton from './components/HelpButton'
 import ExamplesButton from './containers/ExamplesButton'
-import store from '../../../store/index'
+import store from 'store/index';
 import HeaderMenu from './containers/HeaderMenu'
 import { Menu } from 'antd'
 const Item = Menu.Item

@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react'
-import { Camera as CameraGraphic } from '../../../../components/MathBox'
+import { Camera as CameraGraphic } from 'components/MathBox';
 import MathGraphic from '../MathGraphic'
 import MathObjectUI from '../../MathObjectUI'
 import { cameraMeta } from '../metadata'

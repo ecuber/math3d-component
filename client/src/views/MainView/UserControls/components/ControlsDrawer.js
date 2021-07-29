@@ -1,17 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Drawer from '../../../../containers/Drawer'
-import SortableTree from '../../../../containers/SortableTree'
-import ControllerHeader from '../../../../containers/ControllerHeader'
-import ScrollWithOverflow from '../../../../components/ScrollWithOverflow'
-import { HEADER_HEIGHT_PX } from '../../../../constants'
-import MathObjects, {
-  Folder,
-  MathSymbols,
-  MathGraphics,
-  AXIS, GRID, CAMERA
-} from '../../../../containers/MathObjects'
-import ControlledTabs, { TabPane } from '../../../../containers/ControlledTabs'
+import Drawer from 'containers/Drawer';
+import SortableTree from 'containers/SortableTree';
+import ControllerHeader from 'containers/ControllerHeader';
+import ScrollWithOverflow from 'components/ScrollWithOverflow';
+import { HEADER_HEIGHT_PX } from 'constants';
+import MathObjects, { Folder, MathSymbols, MathGraphics, AXIS, GRID, CAMERA } from 'containers/MathObjects';
+import ControlledTabs, { TabPane } from 'containers/ControlledTabs';
 import styled from 'styled-components'
 
 // First sort the MathObject keys in the order we want, then extract the

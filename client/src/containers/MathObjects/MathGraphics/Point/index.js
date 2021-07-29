@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react'
-import { Point as PointGraphic } from '../../../../components/MathBox'
+import { Point as PointGraphic } from 'components/MathBox';
 import MathGraphic from '../MathGraphic'
 import MathGraphicUI from '../containers/MathGraphicUI'
 import { pointMeta } from '../metadata'

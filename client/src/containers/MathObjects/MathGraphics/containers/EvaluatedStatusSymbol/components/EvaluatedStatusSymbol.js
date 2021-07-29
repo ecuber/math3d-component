@@ -7,7 +7,7 @@ import typeof {
   toggleProperty,
   setProperty
 } from '../../../../../../containers/MathObjects/actions'
-import { parser } from '../../../../../../constants/parsing'
+import { parser } from 'constants/parsing';
 
 export type DefaultProps = {|
   parser: Parser

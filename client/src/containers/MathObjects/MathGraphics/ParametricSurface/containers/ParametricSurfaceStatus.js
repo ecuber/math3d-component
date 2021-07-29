@@ -2,7 +2,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import EvaluatedStatusSymbol from '../../containers/EvaluatedStatusSymbol'
-import { colors, colorMaps } from '../../../../../constants/colors'
+import { colors, colorMaps } from 'constants/colors';
 import { Tabs } from 'antd'
 import {
   StaticMathStyled,

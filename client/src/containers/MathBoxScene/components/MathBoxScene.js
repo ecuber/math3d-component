@@ -1,20 +1,13 @@
 // @flow
-import type {
-  HandledProps as GraphicHandledProps,
-  ErrorMap
-} from '../../../components/MathBox/MathBoxComponents' 
+import type { HandledProps as GraphicHandledProps, ErrorMap } from 'components/MathBox/MathBoxComponents'; 
 import React, { PureComponent } from 'react'
-import { MathBox, Cartesian } from '../../../components/MathBox'
+import { MathBox, Cartesian } from 'components/MathBox';
 import { MathScopeConsumer } from '../../MathScopeContext'
 import { MathGraphics } from '../../MathObjects'
 import PropTypes from 'prop-types'
-import { parser } from '../../../constants/parsing'
-import { RenderErrorData, setError } from '../../../services/errors'
-import {
-  evalData,
-  handleEvalErrors,
-  filterObject
-} from '../../../services/evalData'
+import { parser } from 'constants/parsing';
+import { RenderErrorData, setError } from 'services/errors';
+import { evalData, handleEvalErrors, filterObject } from 'services/evalData';
 type SetError = typeof setError
 
 type ErrorState = {

@@ -1,10 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react'
-import {
-  ParametricSurface as ParametricSurfaceGraphic,
-  ExplicitSurface as ExplicitSurfaceGraphic,
-  ExplicitSurfacePolar as ExplicitSurfacePolarGraphic
-} from '../../../../components/MathBox'
+import { ParametricSurface as ParametricSurfaceGraphic, ExplicitSurface as ExplicitSurfaceGraphic, ExplicitSurfacePolar as ExplicitSurfacePolarGraphic } from 'components/MathBox';
 import MathGraphic from '../MathGraphic'
 import MathGraphicUI from '../containers/MathGraphicUI'
 import ParametricSurfaceStatus from './containers/ParametricSurfaceStatus'
@@ -19,7 +15,7 @@ import {
   MathInputRHS,
   StaticMathStyled
 } from '../../containers/MathInput'
-import { parser } from '../../../../constants/parsing'
+import { parser } from 'constants/parsing';
 
 type Props = {
   id: string

@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
-import MathBoxContainer from '../../containers/MathBoxContainer'
-import MathBoxScene from '../../containers/MathBoxScene'
+import MathBoxContainer from 'containers/MathBoxContainer';
+import MathBoxScene from 'containers/MathBoxScene';
 import styled from 'styled-components'
 
 const SceneBoundary = styled.div`

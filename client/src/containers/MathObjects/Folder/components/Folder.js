@@ -1,12 +1,12 @@
 import React, { PureComponent } from 'react'
-import SortableList from '../../../../components/SortableList'
+import SortableList from 'components/SortableList';
 import MathGraphics from '../../MathGraphics'
 import MathSymbols from '../../MathSymbols'
 import CollapsedIndicator from './CollapsedIndicator'
 import Collapsible from 'react-collapsible'
 import PropTypes from 'prop-types'
 import MathObjectUI from '../../MathObjectUI'
-import theme from '../../../../constants/theme'
+import theme from 'constants/theme';
 import { FOLDER } from '../metadata'
 
 export default class Folder extends PureComponent {

@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import 'process'
-import store from './store'
+import store from 'store';
 import { Provider } from 'react-redux'
 import './index.css'
 import App from './App'
-import { hasMeaningfulChangeOccured } from './services/lastSavedState/index'
-import MathScopeProvider from './containers/MathScopeContext'
-import { scopeEvaluator, parser } from './constants/parsing'
-import theme from './constants/theme'
+import { hasMeaningfulChangeOccured } from 'services/lastSavedState/index';
+import MathScopeProvider from 'containers/MathScopeContext';
+import { scopeEvaluator, parser } from 'constants/parsing';
+import theme from 'constants/theme';
 
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'

@@ -1,6 +1,6 @@
 // @flow
 import type { Scope } from '../../../../../utils/mathParsing/MathExpression'
-import typeof { setError as SetError } from '../../../../../services/errors'
+import typeof { setError as SetError } from 'services/errors';
 import React, { PureComponent } from 'react'
 import MathObjectUI from '../../../MathObjectUI'
 import {
@@ -12,7 +12,7 @@ import EvaluatedSlider from './EvaluatedSlider'
 import AnimationControls from './AnimationControls'
 import { MathInputRHS } from '../../../containers/MathInput'
 import { MathScopeConsumer } from '../../../../MathScopeContext'
-import { parser } from '../../../../../constants/parsing'
+import { parser } from 'constants/parsing';
 import typeof {
   setProperty as SetProperty
 } from '../../../../../containers/MathObjects/actions'

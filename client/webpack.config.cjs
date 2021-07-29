@@ -28,7 +28,14 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'process': 'process/browser'
+            'process': 'process/browser',
+            'utils': path.resolve(__dirname, 'src/utils/'),
+            'services': path.resolve(__dirname, 'src/services/'),
+            'containers': path.resolve(__dirname, 'src/containers/'),
+            'components': path.resolve(__dirname, 'src/components/'),
+            'constants': path.resolve(__dirname, 'src/constants/'),
+            'store': path.resolve(__dirname, 'src/store/'),
+            
         }
     },
     externals: {

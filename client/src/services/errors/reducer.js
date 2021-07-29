@@ -1,15 +1,12 @@
 import update from 'immutability-helper'
-import { FOLDER } from '../../containers/MathObjects'
+import { FOLDER } from 'containers/MathObjects';
 import {
   PARSE_ERROR,
   EVAL_ERROR,
   RENDER_ERROR
 } from './ErrorData'
 import { SET_ERROR, UNSET_ERROR } from './actions'
-import {
-  CREATE_MATH_OBJECT,
-  DELETE_MATH_OBJECT
-} from '../../containers/MathObjects/actions'
+import { CREATE_MATH_OBJECT, DELETE_MATH_OBJECT } from 'containers/MathObjects/actions';
 
 const initialState = {}
 

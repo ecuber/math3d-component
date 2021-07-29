@@ -14,7 +14,7 @@ import {
 import diffWithSets from '../../utils/shallowDiffWithSets'
 import { lighten } from '../../utils/colors'
 import marchingCubes from '../../utils/marchingCubes'
-import { colorMaps } from '../../constants/colors'
+import { colorMaps } from 'constants/colors';
 
 const THREE = window.THREE
 

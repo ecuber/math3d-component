@@ -1,6 +1,6 @@
 // @flow
 import React, { PureComponent } from 'react'
-import { ParametricCurve as ParametricCurveGraphic } from '../../../../components/MathBox'
+import { ParametricCurve as ParametricCurveGraphic } from 'components/MathBox';
 import MathGraphic from '../MathGraphic'
 import MathGraphicUI from '../containers/MathGraphicUI'
 import { parametricCurveMeta } from '../metadata'

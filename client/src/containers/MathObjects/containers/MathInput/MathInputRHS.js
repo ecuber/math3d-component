@@ -5,9 +5,9 @@ import type { OtherProps } from './components/MathInput'
 import type { Optionalize, OptionalizeSome } from '../../../../utils/flow'
 import { connect } from 'react-redux'
 import { setPropertyAndError } from '../../actions'
-import { setError } from '../../../../services/errors'
-import type { ErrorData } from '../../../../services/errors'
-import { getErrorMsg } from '../../../../services/errors/selectors'
+import { setError } from 'services/errors';
+import type { ErrorData } from 'services/errors';
+import { getErrorMsg } from 'services/errors/selectors';
 import { getMathObjectProp } from './selectors'
 
 /**

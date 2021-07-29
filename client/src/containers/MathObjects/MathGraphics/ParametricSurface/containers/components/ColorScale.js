@@ -2,7 +2,7 @@
 import React from 'react'
 import { StaticMathStyled } from '../../../../containers/MathInput'
 import styled from 'styled-components'
-import { colorMaps } from '../../../../../../constants/colors'
+import { colorMaps } from 'constants/colors';
 
 const ScaleContainer = styled.div`
   display:flex;
