@@ -16,9 +16,9 @@ const Item = Menu.Item
 const HeaderContainer = styled.div`
   background-color: ${props => props.theme.gray[1]};
   height: ${ HEADER_HEIGHT_PX }px;
-  display:flex;
-  width:100%;
-  align-items:center;
+  display: flex;
+  width: 100%;
+  align-items: center;
   justify-content: space-between;
   border-bottom: 1pt solid ${props => props.theme.gray[5]};
 `
@@ -26,11 +26,20 @@ const HeaderContainer = styled.div`
 const HeaderGroup = styled.div`
   padding-left: 10px;
   padding-right: 10px;
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 `
 
-const Header = (props: { showButton: boolean } ) => {
+const HStack = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const SavedAt = styled.p`
+  padding: 0 10px;
+`
+
+const Header = (props: { dehydrated: any, showButton: boolean } ) => {
   const { showButton } = props
   return (
     <HeaderContainer>
@@ -41,8 +50,17 @@ const Header = (props: { showButton: boolean } ) => {
       <HeaderGroup>
         {/** TODO: update save button styles */}
         {
-            props.showButton && // CUSTOM_FUNCTIOANLITY
-            <ShareButton getState={store.getState}/>
+            props.showButton &&
+            <HStack>
+              <SavedAt>
+                {
+                  props.dehydrated.edited 
+                  ? `Last saved at ${props.dehydrated.edited}`
+                  : 'You have unsaved changes'
+                }
+              </SavedAt>
+              <ShareButton dehydrated={props.dehydrated} getState={store.getState}/>
+            </HStack>
           }
         {/* <HeaderMenu>
           <Item><ExamplesButton /></Item>
@@ -53,7 +71,8 @@ const Header = (props: { showButton: boolean } ) => {
 }
 
 Header.propTypes = {
-  showButton: PropTypes.bool
+  showButton: PropTypes.bool,
+  dehydrated: PropTypes.object
 }
 
 export default Header

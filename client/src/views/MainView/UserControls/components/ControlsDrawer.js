@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Drawer from '../../../../containers/Drawer'
 import SortableTree from '../../../../containers/SortableTree'
 import ControllerHeader from '../../../../containers/ControllerHeader'
@@ -43,7 +44,7 @@ const StyledControlledTabs = styled(ControlledTabs)`
   }
 `
 
-const ControlsDrawer = () => {
+const ControlsDrawer = (props) => {
   return (
     <Drawer id='main'>
       <StyledControlledTabs
@@ -63,6 +64,10 @@ const ControlsDrawer = () => {
       </StyledControlledTabs>
     </Drawer>
   )
+}
+
+ControlsDrawer.propTypes = {
+  fullscreen: PropTypes.bool
 }
 
 export default ControlsDrawer

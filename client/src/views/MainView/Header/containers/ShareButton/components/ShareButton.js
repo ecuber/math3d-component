@@ -47,7 +47,8 @@ type Props = {
   getState: () => {},
   visible: Boolean,
   setProperty: SetProperty,
-  setCreationDate: SetCreationDate
+  setCreationDate: SetCreationDate,
+  dehydrated: any
 }
 type State = {
   id: ?string,
@@ -58,7 +59,8 @@ export default class ShareButton extends PureComponent<Props, State> {
 
   state = {
     id: null,
-    isSaved: false
+    isSaved: false,
+    showWarning: true
   }
 
   dehydratedJson: ?string
@@ -78,10 +80,10 @@ export default class ShareButton extends PureComponent<Props, State> {
 
   saveGraph = () => {
     this.saveCameraData()
-    const state = this.props.getState() // loads scene state from parent (including newly updated camera stuff)
+    let state = this.props.getState() // loads scene state from parent (including newly updated camera stuff)
     const dehydrated = dehydrate(state)
     const lastUpdated = new Date()
-    const id = this.state.id || this.getId()
+    const id = this.state.id ?? this.props?.dehydrated?.metadata?.id ?? this.getId()
     const body = { id, dehydrated, lastUpdated }
 
     fetch('dev/save', {
@@ -91,10 +93,14 @@ export default class ShareButton extends PureComponent<Props, State> {
       },
       body: JSON.stringify(body)
     } )
+    .then((res) => {
+      if (res.ok) {
+        this.setState( { isSaved: true } )
+      }
+    } )
 
     this.dehydratedJson = JSON.stringify(dehydrated)
     this.setState( { id } )
-    // post to localhost webserver??
   }
 
   onVisibleChange = (visible: boolean) => {
@@ -108,11 +114,9 @@ export default class ShareButton extends PureComponent<Props, State> {
         <SaveStatus isVisible={true}>
           <strong>Graph saved.</strong> (scene ID: {this.state.id})
         </SaveStatus>
-        {
-          <CopyToClipboard text={this.dehydratedJson}>
-            <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
-          </CopyToClipboard>
-        }
+        <CopyToClipboard text={this.dehydratedJson}>
+          <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
+        </CopyToClipboard>
       </>
     )
   }

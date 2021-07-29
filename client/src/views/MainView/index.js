@@ -16,7 +16,8 @@ type OwnProps = {|
   drawer?: boolean,
   dev?: boolean,
   width?: String,
-  height?: String
+  height?: String,
+  fullscreen?: boolean
 |}
 
 type DispatchProps = {|
@@ -48,14 +49,12 @@ function MainView(props: Props) {
     setWindowWidth(window.innerWidth)
   }, [window] )
 
-  const showButton = props.drawer !== undefined
-    ? props.drawer
-    : false
+  const showButton = (props.drawer || props.dev) ?? false
 
   return <FlexContainer ref={containerRef} style={ { overflow: 'hidden', flexDirection: 'column' } }>
-    <Header showButton={showButton} />
+    <Header dehydrated={props.dehydrated} showButton={showButton} />
     <FlexContainer>
-      <UserControls dev={props.dev} drawer={props.drawer} />
+      <UserControls fullscreen={props.fullscreen} dev={props.dev} drawer={props.drawer} />
       <Scene
         componentRef={containerRef}
         drawer={props.drawer}

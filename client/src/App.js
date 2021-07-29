@@ -14,7 +14,8 @@ App.propTypes = {
   dehydrated: PropTypes.object,
   drawer: PropTypes.bool,
   dev: PropTypes.bool,
-  style: PropTypes.any
+  style: PropTypes.any,
+  fullscreen: PropTypes.bool
 }
 
 export default App

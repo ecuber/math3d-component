@@ -4,6 +4,9 @@ import bodyParser from 'body-parser'
 import path from 'path'
 import fs from 'fs'
 import { createContext } from 'vm'
+import Math3D from 'math3d-component'
+
+import * as config from '../server_config'
 
 const JSON_PATH = '../app/src/myGraphs.json'
 const PORT = process.env.PORT || 5000
@@ -41,6 +44,11 @@ app.post('/dev/save', (req, res) => {
 app.get('/dev/get/:id', (req, res) => {
   const graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
   res.json(graphs[req.params.id])
+})
+
+app.get('/dev/edit', (req, res) => {
+  const { dehydrated } = req.body
+  res.send(ReactDOMServer.renderToString(<Math3D dehydrated={dehydrated} />))
 })
 
 app.use(function(error, req, res, next) {

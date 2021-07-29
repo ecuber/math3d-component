@@ -38,7 +38,8 @@ Math3D.propTypes = {
   dehydrated: PropTypes.object,
   drawer: PropTypes.bool,
   dev: PropTypes.bool,
-  style: PropTypes.object
+  style: PropTypes.object,
+  fullscreen: PropTypes.bool
 }
 
 export default Math3D
