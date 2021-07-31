@@ -2,6 +2,10 @@ var path = require('path')
 var externalReact = require('webpack-external-react')
 var webpack = require('webpack')
 var NODE_ENV = 'development'
+var jQueryPath = path.resolve(path.join(__dirname, 'src/libs/jquery.min.js'))
+var mathquillPath = path.resolve(path.join(__dirname, 'src/libs/mathquill.min.js'))
+var mathBoxPath = path.resolve(path.join(__dirname, 'src/libs/mathbox-bundle.min.js'))
+var threePath = path.resolve(path.join(__dirname, 'src/libs/three.min.js'))
 
 module.exports = {
     mode: NODE_ENV,
@@ -10,19 +14,24 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
         library: 'math3d-component',
-        libraryTarget: 'umd'
+        libraryTarget: 'umd',
+        globalObject: 'this'
     },
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(jsx?)$/,
                 exclude: [/node_modules/],
                 loader: 'babel-loader',
                 options: require('./babel.config.json')
             },
             {
-              test: /\.css$/i,
-              use: ['style-loader', 'css-loader']
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                use: ['file-loader']
             }
         ]
     },
@@ -41,5 +50,24 @@ module.exports = {
     externals: {
         'react': 'react',
         'react-dom': 'react-dom'
-    }
+    },
+    plugins: [
+        // new webpack.ProvidePlugin( {
+        //     $: jQueryPath,
+        //     jQuery: jQueryPath,
+        //     'window.jQuery': jQueryPath
+        //   } ),
+        //   new webpack.ProvidePlugin( {
+        //       MathQuill: mathquillPath,
+        //       'window.MathQuill': mathquillPath
+        //   } ),
+        //   new webpack.ProvidePlugin( {
+        //       mathBox: mathBoxPath,
+        //       'window.mathBox': mathBoxPath,
+        //       THREE: mathBoxPath
+        //   } ),
+        //   new webpack.ProvidePlugin( {
+        //       THREE: threePath
+        //   } )
+        ]
 }

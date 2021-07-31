@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Embedded math3d-react React component.",
   "engines": {
-    "node": "14.1.x"
+    "node": "16.1.x"
   },
   "scripts": {
-    "start": "yarn --cwd ./server start & yarn --cwd ./app start"
+    "start": "yarn --cwd ./server start & yarn --cwd ./app start",
+    "update": "yarn --cwd ./server add math3d-component && yarn --cwd ./app add math3d-component"
   },
   "cacheDirectories": [
     "server/node_modules",
@@ -15,5 +16,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mars/heroku-cra-node.git"
-  }
+  },
+  "dependencies": {}
 }

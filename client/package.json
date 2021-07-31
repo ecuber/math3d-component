@@ -2,8 +2,7 @@
   "name": "math3d-component",
   "description": "Componentized math3d-react",
   "main": "dist/index.js",
-  "version": "1.3.1",
-  "type": "module",
+  "version": "1.3.58",
   "dependencies": {
     "antd": "^3.15.0",
     "babel-core": "^7.0.0-beta.41",
@@ -35,7 +34,8 @@
     "styled-components": "^4.1.3",
     "tarjan-graph": "^1.0.1",
     "toposort": "^1.0.7",
-    "webpack": "^4.44.2"
+    "webpack": "^4.44.2",
+    "window-or-global": "^1.0.1"
   },
   "peerDependencies": {
     "lodash": "^4.17.19"
@@ -65,14 +65,16 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-standard": "^3.1.0",
+    "exports-loader": "^3.0.0",
+    "file-loader": "^6.2.0",
     "flow-bin": "^0.89.0",
     "flow-inlinestyle": "^1.0.9",
+    "imports-loader": "^3.0.0",
     "install-peers-cli": "^2.2.0",
     "jest": "^27.0.6",
     "jest-diff": "^23.6.0",
     "jest-get-type": "^22.4.3",
     "jest-matcher-deep-close-to": "^1.3.0",
-    "jquery": "^3.5.1",
     "process": "^0.11.10",
     "react": "^16.8.4",
     "react-dom": "^16.14.0",

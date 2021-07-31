@@ -10,6 +10,7 @@ import { loadDehydratedState } from 'store/actions';
 import initialState from 'store/initialState';
 import { connect } from 'react-redux'
 import { setLastSavedState } from 'services/lastSavedState/actions';
+import { Modal } from 'antd'
 
 type OwnProps = {|
   dehydrated?: any,
@@ -17,7 +18,9 @@ type OwnProps = {|
   dev?: boolean,
   width?: String,
   height?: String,
-  fullscreen?: boolean
+  fullscreen?: boolean,
+  mathbox: any,
+  domElement: any
 |}
 
 type DispatchProps = {|
@@ -37,10 +40,35 @@ function MainView(props: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [windowWidth, setWindowWidth] = useState(0)
   
+  const { drawer, dev, fullscreen, dehydrated } = props
+  const showButton = dev ?? false
+
+  // Dev mode modal state
+  const [visible, setVisible] = useState(!fullscreen && dev)
+  const [confirmLoading, setConfirmLoading] = useState(false)
+  const [modalText, setModalText] = useState('Would you like to open the graph editor?')
+
+  const handleOk = async () => {
+    setModalText('Opening graph editor in a new tab...')
+    setConfirmLoading(true)
+    await fetch('dev/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify( { dehydrated } )
+    } )
+    .then((res) => {
+      if (res.ok) {
+        setModalText('Graph editor opened in a new tab. Press the Launch Editor button again to reopen it.')
+      }
+    } )
+  }
+
   useLayoutEffect(() => {
-    if (props.dehydrated) {
+    if (dehydrated) {
       // props.loadGraphFromDb(props.graphId)
-      props.loadGraphFromDb(props.dehydrated)
+      props.loadGraphFromDb(dehydrated)
     }
     props.setLastSavedState()
   } )
@@ -49,15 +77,32 @@ function MainView(props: Props) {
     setWindowWidth(window.innerWidth)
   }, [window] )
 
-  const showButton = (props.drawer || props.dev) ?? false
+  const containerStyle = {
+    overflow: 'hidden',
+    flexDirection: 'column'
+  }
 
-  return <FlexContainer ref={containerRef} style={ { overflow: 'hidden', flexDirection: 'column' } }>
-    <Header dehydrated={props.dehydrated} showButton={showButton} />
+  console.log('mathbox - MainView/index.js', props.mathbox)
+  console.log('mathbox element - MainView/index.js',props.domElement)
+
+  return <FlexContainer ref={containerRef} style={containerStyle}>
+    <Modal
+      visible={visible}
+      confirmLoading={confirmLoading}
+      onOk={handleOk}
+      okText='Launch Editor'
+      onCancel={() => setVisible(false)}
+    >
+      <p>{modalText}</p>
+    </Modal>
+    <Header mathbox={props.mathbox} dehydrated={dehydrated} showButton={showButton} />
     <FlexContainer>
-      <UserControls fullscreen={props.fullscreen} dev={props.dev} drawer={props.drawer} />
+      <UserControls domElement={props.domElement} mathbox={props.mathbox} fullscreen={fullscreen} dev={dev} drawer={drawer || dev} />
       <Scene
+        mathboxElement={props.domElement}
+        mathbox={props.mathbox}
         componentRef={containerRef}
-        drawer={props.drawer}
+        drawer={drawer}
         height={props.height}
         width={props.width}/>
       <Examples />

@@ -47,12 +47,12 @@ const ControlsDrawer = (props) => {
         tabBarExtraContent={<ControllerHeader menuItems={menuItems}/>}
       >
         <TabPane tab='Main' key='1'>
-          <ScrollWithOverflow>
+          <ScrollWithOverflow domElement={props.domElement} mathbox={props.mathbox}>
             <SortableTree root='root' />
           </ScrollWithOverflow>
         </TabPane>
         <TabPane tab={<span> Axes & <br/> Camera</span>} key='2'>
-          <ScrollWithOverflow>
+          <ScrollWithOverflow domElement={props.domElement} mathbox={props.mathbox}>
             <SortableTree root='setup' />
           </ScrollWithOverflow>
         </TabPane>
@@ -62,7 +62,9 @@ const ControlsDrawer = (props) => {
 }
 
 ControlsDrawer.propTypes = {
-  fullscreen: PropTypes.bool
+  fullscreen: PropTypes.bool,
+  mathbox: PropTypes.any,
+  domElement: PropTypes.any
 }
 
 export default ControlsDrawer

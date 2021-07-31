@@ -2,12 +2,12 @@
 import React, { PureComponent } from 'react'
 import classNames from 'classnames'
 
-const MQ = window.MathQuill.getInterface(2)
-
 export type MQMathField = {
   latex: (string => MQMathField) &
-    (() => string)
+  (() => string)
 }
+
+const MQ = window.MathQuill.getInterface(2)
 
 type MathQuillProps = {
   latex: string,
@@ -42,121 +42,113 @@ type MathQuillState = {
   isFocused: boolean
 }
 
-export default class MathQuill extends PureComponent
-  <MathQuillProps, MathQuillState> {
+export default class MQComponent extends PureComponent<MathQuillProps, MathQuillState> {
 
-  mathField: MQMathField
-  span: ?HTMLSpanElement
-  preventOnEdit: boolean
-
-  state = {
-    isFocused: false
-  }
-
+  mathField: MQMathField;
+  span: ?HTMLSpanElement;
+  preventOnEdit: boolean;
+  state = { isFocused: false };
   static configKeys = [
-    'spaceBehavesLikeTab',
-    'leftRightIntoCmdGoes',
-    'restrictMismatchedBrackets',
-    'sumStartsWithNEquals',
-    'supSubsRequireOperand',
-    'charsThatBreakOutOfSupSub',
-    'autoSubscriptNumerals',
-    'autoCommands',
-    'autoOperatorNames',
-    'substituteTextarea'
-  ]
-
+    "spaceBehavesLikeTab",
+    "leftRightIntoCmdGoes",
+    "restrictMismatchedBrackets",
+    "sumStartsWithNEquals",
+    "supSubsRequireOperand",
+    "charsThatBreakOutOfSupSub",
+    "autoSubscriptNumerals",
+    "autoCommands",
+    "autoOperatorNames",
+    "substituteTextarea",
+  ];
   static handlerKeys = {
-    onEnter: 'enter',
-    // onEdit: 'edit', onEdit is handled separately
-    onMoveOutOf: 'moveOutOf',
-    onDeleteOutOf: 'deleteOutOf',
-    onUpOutOf: 'upOutOf',
-    onSelectOutOf: 'selectOutOf',
-    onDownOutOf: 'downOutOf'
-  }
+    onEnter: "enter",
+    onMoveOutOf: "moveOutOf",
+    onDeleteOutOf: "deleteOutOf",
+    onUpOutOf: "upOutOf",
+    onSelectOutOf: "selectOutOf",
+    onDownOutOf: "downOutOf",
+  };
+  
+  // static MQ = MathQuill.getInterface(2);
+
 
   getConfig(props: MathQuillProps) {
+    const config = MQComponent.configKeys.filter(prop => props[prop] ).reduce(
+      (theConfig, prop) => {
+        theConfig[prop] = props[prop];
+        return theConfig;
+      },
+      {},
+    );
 
-    const config = MathQuill.configKeys
-      .filter(prop => props[prop] )
-      .reduce((theConfig, prop) => {
-        theConfig[prop] = props[prop]
-        return theConfig
-      }, {} )
-
-    config.handlers = { }
-    config.handlers.edit = this.onEdit
-
-    // Add remaining handlers and return
-    return Object.keys(MathQuill.handlerKeys)
-      .filter(prop => props[prop] )
-      .reduce((theConfig, prop) => {
-        const handlerKey = MathQuill.handlerKeys[prop]
-        theConfig.handlers[handlerKey] = props[prop]
-        return theConfig
-      }, config)
+    
+    config.handlers = {};
+    config.handlers.edit = this.onEdit;
+    
+    return Object.keys(MQComponent.handlerKeys).filter(prop => props[prop] ).reduce(
+      (theConfig, prop) => {
+        const handlerKey = MQComponent.handlerKeys[prop];
+        theConfig.handlers[handlerKey] = props[prop];
+        return theConfig;
+      },
+      config,
+    );
   }
-
   componentDidMount() {
-    const config = this.getConfig(this.props)
-    this.mathField = MQ.MathField(this.span, config)
-    this.setLatex(this.props.latex)
+    const config = this.getConfig(this.props);
+    this.mathField = MQ.MathField(this.span, config);
+    this.setLatex(this.props.latex);
   }
-
   setLatex(latex: string) {
     if (latex === this.mathField.latex()) {
-      return
+      return;
     }
-    // mathField.latex will trigger onEdit, so supress that.
-    this.preventOnEdit = true
-    this.mathField.latex(this.props.latex)
-    this.preventOnEdit = false
+    
+    this.preventOnEdit = true;
+    this.mathField.latex(this.props.latex);
+    this.preventOnEdit = false;
   }
-
   componentDidUpdate() {
-    this.setLatex(this.props.latex)
+    this.setLatex(this.props.latex);
   }
-
   onEdit = (mathField: MQMathField) => {
-    const handler = this.props.onEdit
-
+    const handler = this.props.onEdit;
+    
     if (handler && !this.preventOnEdit) {
-      handler(mathField)
+      handler(mathField);
     }
-
-  }
-
+  };
   onFocus = () => {
-    this.setState( { isFocused: true } )
+    this.setState( { isFocused: true } );
     if (this.props.onFocus) {
-      this.props.onFocus()
+      this.props.onFocus();
     }
-  }
+  };
   onBlur = () => {
-    this.setState( { isFocused: false } )
+    this.setState( { isFocused: false } );
     if (this.props.onBlur) {
-      this.props.onBlur()
+      this.props.onBlur();
     }
-  }
-
+  };
   render() {
-    // Setting classes through react overrides the custom mathquill classes
-    // unless we also set the mq classes through react.
-    const mqClasses = classNames(this.props.className, {
-      'mq-editable-field': true,
-      'mq-math-mode': true,
-      'mq-focused': this.state.isFocused
-    } )
+    const mqClasses = classNames(
+      this.props.className,
+      {
+        "mq-editable-field": true,
+        "mq-math-mode": true,
+        "mq-focused": this.state.isFocused,
+      },
+    );
     return (
       <span
         onFocus={this.onFocus}
         onBlur={this.onBlur}
         style={this.props.style}
         className={mqClasses}
-        ref={ ref => { this.span = ref } }>
-      </span>
-    )
+        ref={ref => {
+          this.span = ref;
+        }}></span>
+    );
   }
 
 }

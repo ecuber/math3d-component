@@ -5,17 +5,17 @@ import LoopManager from 'services/LoopManager';
 
 type Props = {
   mathbox: any,
+  mathboxElement: any,
   children: React.Node
 }
 
 export class MathBox extends React.PureComponent<Props> {
 
-  mathboxNode = this.props.mathbox
   loopManager: LoopManager
   updateSymbol = Symbol('update marker')
 
   componentDidMount() {
-    this.loopManager = new LoopManager(this.mathboxNode.three)
+    this.loopManager = new LoopManager(this.props.mathbox.three)
   }
 
   componentWillUnmount() {
@@ -39,11 +39,12 @@ export class MathBox extends React.PureComponent<Props> {
     if (!this.props.children) {
       return null
     }
+    console.log(this.props.mathbox)
     return React.Children.map(
       this.props.children,
       child => React.cloneElement(child, {
-        mathboxParent: this.mathboxNode,
-        mathbox: this.mathboxNode
+        mathboxParent: this.props.mathbox,
+        mathbox: this.props.mathbox
       } )
     )
   }

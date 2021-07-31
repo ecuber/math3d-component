@@ -48,7 +48,8 @@ type Props = {
   visible: Boolean,
   setProperty: SetProperty,
   setCreationDate: SetCreationDate,
-  dehydrated: any
+  dehydrated: any,
+  mathbox: any
 }
 type State = {
   id: ?string,
@@ -71,7 +72,7 @@ export default class ShareButton extends PureComponent<Props, State> {
 
   // Saves camera data in parent state
   saveCameraData = () => {
-    const { position, lookAt } = getCameraData()
+    const { position, lookAt } = getCameraData(this.props.mathbox)
     const id = 'camera'
     const type = CAMERA
     this.props.setProperty(id, type, 'relativePosition', position)

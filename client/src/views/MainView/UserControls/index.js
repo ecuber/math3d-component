@@ -6,7 +6,7 @@ import ScreenSizeDrawerManager from 'containers/Drawer/ScreenSizeDrawerManager';
 export default function UserControls(props) {
   return (
     <Fragment>
-      <ControlsDrawer />
+      <ControlsDrawer domElement={props.domElement} mathbox={props.mathbox} />
       <ScreenSizeDrawerManager dev={props.dev} drawer={props.drawer} id='main'/>
     </Fragment>
   )
@@ -15,5 +15,7 @@ export default function UserControls(props) {
 UserControls.propTypes = {
   drawer: PropTypes.bool,
   dev: PropTypes.bool,
-  fullscreen: PropTypes.bool
+  fullscreen: PropTypes.bool,
+  mathbox: PropTypes.any,
+  domElement: PropTypes.element
 }

@@ -16,8 +16,6 @@ import { lighten } from '../../utils/colors'
 import marchingCubes from '../../utils/marchingCubes'
 import { colorMaps } from 'constants/colors';
 
-const THREE = window.THREE
-
 type MathBoxNode = any
 
 type HandlerNodes = {
@@ -92,6 +90,7 @@ class AbstractMBC extends React.Component<Props> {
   }
 
   componentDidMount = () => {
+    console.log('mbcomponents.js mbParent - ', this.props.mathboxParent)
     if (this.props.mathboxParent) {
       // $FlowFixMe: this.mathboxRender is abstract
       this.mathboxNode = this.mathboxRender(this.props.mathboxParent)

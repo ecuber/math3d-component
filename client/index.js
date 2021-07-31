@@ -1,3 +1,4 @@
-import Math3D from './dist/bundle.js'
+const Math3D = require('math3d-component/dist/bundle').default
 
-export default (props) => Math3D(props)
+module.exports = (props) => Math3D(props)
+module.exports.default = (props) => Math3D(props)

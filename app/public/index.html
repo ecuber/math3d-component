@@ -24,26 +24,11 @@
 </head>
 
 <body>
-  <style>
-    #mathbox {
-      position: fixed;
-      width: 100vw;
-      height: 100%;
-    }
-
-    html,
-    body {
-      position: fixed;
-      overflow: hidden;
-    }
-  </style>
-
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
 
   <div id="root"></div>
-  <div id='mathbox'></div>
 
   <script>
     // From Math3D client/public/index.html
@@ -55,27 +40,7 @@
      *    with thisArg. Not sure why.
      *  - MathQuill requires jQuery anyway, so I'm using it here, too.
      */
-    if (window.mathBox) {
-      const mathboxElement = document.getElementById('mathbox')
-      const mathbox = mathBox({
-        plugins: ['core', 'controls', 'cursor'],
-        controls: {
-          klass: THREE.OrbitControls
-        },
-        element: mathboxElement,
-        camera: {
-          up: new THREE.Vector3(0, 0, 1)
-        }
-      });
-      const three = mathbox.three;
-
-      three.camera.position.set(1, 1, 2);
-      three.renderer.setClearColor(new THREE.Color(0xFFFFFF), 1.0);
-
-      // These window bindings are used by MathBox react component.
-      window.mathbox = mathbox
-      window.mathboxElement = mathboxElement
-    }
+    console.log(window)
   </script>
 </body>
 

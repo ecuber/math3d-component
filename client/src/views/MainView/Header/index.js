@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { HEADER_HEIGHT_PX } from 'constants';
+import { HEADER_HEIGHT_PX } from 'constants/index'
 import ShareButton from './containers/ShareButton'
 import HeaderButton from './components/HeaderButton'
 import TitleInput from './containers/TitleInput'
@@ -38,9 +38,15 @@ const HStack = styled.div`
 const SavedAt = styled.p`
   padding: 0 10px;
 `
+type Props = {
+  dehydrated: any,
+  showButton: boolean,
+  mathbox: any
+}
 
-const Header = (props: { dehydrated: any, showButton: boolean } ) => {
-  const { showButton } = props
+const Header = (props: Props) => {
+  const { showButton, mathbox, dehydrated } = props
+  const { getState } = store
   return (
     <HeaderContainer>
       <HeaderGroup>
@@ -51,16 +57,17 @@ const Header = (props: { dehydrated: any, showButton: boolean } ) => {
         {/** TODO: update save button styles */}
         {
             props.showButton &&
-            <HStack>
-              <SavedAt>
-                {
-                  props.dehydrated.edited 
-                  ? `Last saved at ${props.dehydrated.edited}`
-                  : 'You have unsaved changes'
-                }
-              </SavedAt>
-              <ShareButton dehydrated={props.dehydrated} getState={store.getState}/>
-            </HStack>
+            <ShareButton mathbox={mathbox} dehydrated={dehydrated} getState={getState}/>
+            // <HStack>
+            //   <SavedAt>
+            //     {
+            //       props.dehydrated.edited 
+            //       ? `Last saved at ${props.dehydrated.edited}`
+            //       : 'You have unsaved changes'
+            //     }
+            //   </SavedAt>
+            //   <ShareButton dehydrated={props.dehydrated} getState={store.getState}/>
+            // </HStack>
           }
         {/* <HeaderMenu>
           <Item><ExamplesButton /></Item>

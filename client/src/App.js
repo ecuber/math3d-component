@@ -15,7 +15,9 @@ App.propTypes = {
   drawer: PropTypes.bool,
   dev: PropTypes.bool,
   style: PropTypes.any,
-  fullscreen: PropTypes.bool
+  fullscreen: PropTypes.bool,
+  mathbox: PropTypes.any,
+  domElement: PropTypes.any
 }
 
 export default App

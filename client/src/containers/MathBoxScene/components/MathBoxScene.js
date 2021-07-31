@@ -18,7 +18,9 @@ type Props = {
   mathGraphics: { [id: string]: Object },
   evalErrors: ErrorState,
   renderErrors: ErrorState,
-  setError: SetError
+  setError: SetError,
+  mathbox: any,
+  mathboxElement: any
 }
 export default class MathBoxScene extends PureComponent<Props> {
 
@@ -27,7 +29,9 @@ export default class MathBoxScene extends PureComponent<Props> {
     mathGraphics: PropTypes.object.isRequired,
     evalErrors: PropTypes.object.isRequired,
     renderErrors: PropTypes.object.isRequired,
-    setError: PropTypes.func.isRequired
+    setError: PropTypes.func.isRequired,
+    mathbox: PropTypes.any,
+    mathboxElement: PropTypes.any
   }
 
   constructor(props: Props) {
@@ -89,12 +93,14 @@ export default class MathBoxScene extends PureComponent<Props> {
   }
 
   render() {
-    const { mathGraphics, evalErrors, setError } = this.props
+    const { mathGraphics, evalErrors, setError, mathbox, mathboxElement } = this.props
+    console.log('mathbox - mathboxscene.js', mathbox)
+    console.log('mathbox element - mathboxscene.js', mathboxElement)
     return (
       <MathScopeConsumer>
         {( { scope, scopeDiff } ) => {
           return (
-            <MathBox mathbox={window.mathbox}>
+            <MathBox mathboxElement={mathboxElement} mathbox={mathbox}>
               <Cartesian id='rootCartesian'>
                 {this.props.order.map(id => {
                   const settings = mathGraphics[id]

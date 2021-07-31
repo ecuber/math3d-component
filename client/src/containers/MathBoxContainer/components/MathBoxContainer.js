@@ -29,11 +29,11 @@ const MathBoxContainer = (props) => {
   // console.log('props: MathBoxContainer.js', props)
   // console.log(props.leftOffset)
   // console.log(window.innerWidth)
-
+    // console.log('mbelement - mbcontainer.js', props.mathboxElement)
   useEffect(() => {
-    const mathboxElement = props.mathboxElement
+    const { mathboxElement } = props
     mathboxElement.parentNode.removeChild(mathboxElement)
-    containerRef.current.appendChild(mathboxElement)
+    containerRef?.current?.appendChild(mathboxElement)
 
     // const ratio = props.componentRef.current?.clientWidth / window.innerWidth
     

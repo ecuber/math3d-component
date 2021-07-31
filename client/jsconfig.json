@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "es6",
+    "paths": {
+      "utils": ["./src/utils/*"],
+      "services": ["./src/services/*"],
+      "containers": ["./src/containers/*"],
+      "components": ["./src/components/*"],
+      "constants": ["./src/constants/*"],
+      "store": ["./src/store/*"]
+    }
+  }
+}

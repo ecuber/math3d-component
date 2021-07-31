@@ -81,7 +81,9 @@ function forwardEventToElement(domElement: HTMLElement, event: Event) {
 }
 
 type Props = {
-  children?: React.Node
+  children?: React.Node,
+  mathbox: any,
+  domElement: any
 }
 
 type State = {
@@ -97,8 +99,8 @@ export default class ScrollWithOverflow extends React.PureComponent<Props, State
     'touchstart', 'touchmove', 'touchend'
   ]
 
-  domElement = window.mathbox.three.controls.domElement
-
+  domElement = this.props.mathbox.three.controls.domElementij
+  
   constructor(props: Props) {
     super(props)
     this.coverRef = React.createRef()

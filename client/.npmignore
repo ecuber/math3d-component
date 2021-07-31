@@ -6,3 +6,6 @@ webpack.config.js
 .env
 node_modules
 .eslintrc
+babel.config.json
+jsconfig.json
+

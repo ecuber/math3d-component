@@ -1,5 +1,5 @@
 // @flow
-import MathQuill, { StaticMath } from 'components/MathQuill';
+import MQComponent, { StaticMath } from "components/MathQuill";
 import styled, { css } from 'styled-components'
 
 const borderStyling = css`
@@ -30,7 +30,7 @@ const alignmentStyling = css`
   padding:2px;
 `
 
-export const MathQuillStyled = styled(MathQuill)`
+export const MathQuillStyled = styled(MQComponent)`
   &.mq-editable-field.mq-math-mode {
     flex:1;
     max-width: 100%;
