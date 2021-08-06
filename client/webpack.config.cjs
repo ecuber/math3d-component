@@ -50,24 +50,5 @@ module.exports = {
     externals: {
         'react': 'react',
         'react-dom': 'react-dom'
-    },
-    plugins: [
-        // new webpack.ProvidePlugin( {
-        //     $: jQueryPath,
-        //     jQuery: jQueryPath,
-        //     'window.jQuery': jQueryPath
-        //   } ),
-        //   new webpack.ProvidePlugin( {
-        //       MathQuill: mathquillPath,
-        //       'window.MathQuill': mathquillPath
-        //   } ),
-        //   new webpack.ProvidePlugin( {
-        //       mathBox: mathBoxPath,
-        //       'window.mathBox': mathBoxPath,
-        //       THREE: mathBoxPath
-        //   } ),
-        //   new webpack.ProvidePlugin( {
-        //       THREE: threePath
-        //   } )
-        ]
+    }
 }

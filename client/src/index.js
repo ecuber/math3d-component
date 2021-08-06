@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState, createContext } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import 'process'
 import newStore from 'store';
 import { Provider } from 'react-redux'
 import App from './App'
@@ -11,7 +10,10 @@ import { scopeEvaluator, parser } from 'constants/parsing';
 import theme from 'constants/theme'
 import randomstring from 'randomstring'
 
+// global imports
+import 'process'
 import './index.css'
+// import 'regenerator-runtime/runtime.js'
 
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
