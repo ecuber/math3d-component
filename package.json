@@ -7,7 +7,8 @@
   },
   "scripts": {
     "start": "yarn --cwd ./server start & yarn --cwd ./app start",
-    "update": "yarn --cwd ./server add math3d-component && yarn --cwd ./app add math3d-component"
+    "update": "yarn --cwd ./server add math3d-component && yarn --cwd ./app add math3d-component",
+    "build:app": "yarn --cwd ./app build"
   },
   "cacheDirectories": [
     "server/node_modules",
@@ -17,5 +18,7 @@
     "type": "git",
     "url": "https://github.com/mars/heroku-cra-node.git"
   },
-  "dependencies": {}
+  "dependencies": {
+    "yarn": "^1.22.11"
+  }
 }
