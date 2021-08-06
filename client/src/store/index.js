@@ -26,10 +26,10 @@ const composedEnhancers = compose(
   ...enhancers
 )
 
-const store = createStore(
+const newStore = () => createStore(
   enableBatching(rootReducer),
   rehydrate(demoState),
   composedEnhancers
 )
 
-export default store
+export default newStore

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, createContext } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import 'process'
-import store from 'store';
+import newStore from 'store';
 import { Provider } from 'react-redux'
 import App from './App'
 import { hasMeaningfulChangeOccured } from 'services/lastSavedState/index';
@@ -15,13 +15,17 @@ import './index.css'
 
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
+import useConstructor from './hooks/useConstructor'
 
 const Math3D = (props) => {
-  // const componentContext = createContext()
+  // useRef's instead of state to avoid unnecessary reload (https://dev.to/jz222/comment/ndbf)
   const mathboxRef = useRef(null)
+  const store = useRef(newStore())
   const [loaded, setLoaded] = useState(false)
+  
+  // want to rerender component after mathbox has loaded (rest will render first)
+  // ==> so we use useState hook
   const [mathbox, setMathbox] = useState(null)
-  // const [reduxId] = useState(`graph-${randomstring.generate(4)}`)
 
   useEffect(() => {
     // have to set mathbox after window is loaded and dependencies are available
@@ -40,7 +44,7 @@ const Math3D = (props) => {
     }
    }, [window] )
 
-   useEffect(() => {
+  useEffect(() => {
      if (loaded) {
        const three = mathbox.three
        three.camera.position.set(1, 1, 2)
@@ -56,7 +60,7 @@ const Math3D = (props) => {
       
     }}>
       <div className='mathbox' ref={mathboxRef}></div>
-      <Provider store={store} context={componentContext}>
+      <Provider store={store.current}>
         <MathScopeProvider scopeEvaluator={scopeEvaluator} parser={parser}>
           <ThemeProvider theme={theme}>
             <BrowserRouter>

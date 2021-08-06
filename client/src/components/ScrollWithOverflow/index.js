@@ -99,7 +99,7 @@ export default class ScrollWithOverflow extends React.PureComponent<Props, State
     'touchstart', 'touchmove', 'touchend'
   ]
 
-  domElement = this.props.mathbox.three.controls.domElementij
+  domElement = this.props.mathbox.three.controls.domElement
   
   constructor(props: Props) {
     super(props)

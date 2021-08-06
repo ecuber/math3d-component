@@ -8,7 +8,7 @@ function App() {
   return<>
   <h1>hello world this is a header</h1>
   <p>this is a paragraph</p>
-  <Math3D style={{ width: '80%', height: '70%' }} drawer={false}/>
+  <Math3D style={{ width: '80%', height: '70%' }} dehydrated={graphs.z6rPenvx} drawer={false}/>
   <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ultricies, sapien eu feugiat ullamcorper, enim nunc posuere ligula, nec maximus risus nulla nec orci. Nullam sem massa, congue sed ultricies eget, ultrices eget nunc. Aenean nec eros bibendum nisl fermentum tempor quis eu tortor. Nulla et nisl enim. Nullam dui tellus, auctor eget feugiat sed, volutpat eu ipsum. Donec lacinia, odio vitae mattis vestibulum, ex purus pellentesque ipsum, mollis sagittis velit arcu ullamcorper augue. In hac habitasse platea dictumst. Phasellus faucibus efficitur magna nec cursus. In aliquam mauris ac quam feugiat, sed dignissim nunc lobortis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin sed massa et turpis tempus rhoncus. In ac mauris diam.
 
