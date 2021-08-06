@@ -12,7 +12,7 @@ const Container = styled.div`
   height: 70%;
   margin: 2rem 0;
 `
-const graphStyles = { width: '80%', border: '2px solid black', borderRadius: 10 }
+const graphStyles = { width: 744, boxShadow: 'lightgray 0 0 30px 2px'}
 
 function App() {
   return<>

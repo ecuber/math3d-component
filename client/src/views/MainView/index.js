@@ -79,7 +79,6 @@ function MainView(props: Props) {
   }, [window] )
 
   const containerStyle = {
-    ...props.style,
     overflow: 'hidden',
     flexDirection: 'column'
   }
