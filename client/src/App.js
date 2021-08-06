@@ -4,10 +4,7 @@ import PropTypes from 'prop-types'
 
 // const App = props => <MainView graphId={props.id}/>
 const App = props => {
-  return <MainView {...{
-    height: props?.style?.height ?? '100%',
-    width: props?.style?.width ?? '100%',
-    ...props } } />
+  return <MainView {...props} />
 }
 
 App.propTypes = {

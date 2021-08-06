@@ -20,7 +20,8 @@ type OwnProps = {|
   height?: String,
   fullscreen?: boolean,
   mathbox: any,
-  domElement: any
+  domElement: any,
+  style?: any
 |}
 
 type DispatchProps = {|
@@ -78,12 +79,13 @@ function MainView(props: Props) {
   }, [window] )
 
   const containerStyle = {
+    ...props.style,
     overflow: 'hidden',
     flexDirection: 'column'
   }
 
-  console.log('mathbox - MainView/index.js', props.mathbox)
-  console.log('mathbox element - MainView/index.js',props.domElement)
+  // console.log('mathbox - MainView/index.js', props.mathbox)
+  // console.log('mathbox element - MainView/index.js',props.domElement)
 
   return <FlexContainer ref={containerRef} style={containerStyle}>
     <Modal

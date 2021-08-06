@@ -17,17 +17,16 @@ import './index.css'
 
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
-import useConstructor from './hooks/useConstructor'
 
 const Math3D = (props) => {
   // useRef's instead of state to avoid unnecessary reload (https://dev.to/jz222/comment/ndbf)
   const mathboxRef = useRef(null)
   const store = useRef(newStore())
-  const [loaded, setLoaded] = useState(false)
   
   // want to rerender component after mathbox has loaded (rest will render first)
   // ==> so we use useState hook
   const [mathbox, setMathbox] = useState(null)
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     // have to set mathbox after window is loaded and dependencies are available
