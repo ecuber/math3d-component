@@ -94,8 +94,8 @@ export default class MathBoxScene extends PureComponent<Props> {
 
   render() {
     const { mathGraphics, evalErrors, setError, mathbox, mathboxElement } = this.props
-    console.log('mathbox - mathboxscene.js', mathbox)
-    console.log('mathbox element - mathboxscene.js', mathboxElement)
+    // console.log('mathbox - mathboxscene.js', mathbox)
+    // console.log('mathbox element - mathboxscene.js', mathboxElement)
     return (
       <MathScopeConsumer>
         {( { scope, scopeDiff } ) => {

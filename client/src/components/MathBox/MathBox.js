@@ -39,7 +39,7 @@ export class MathBox extends React.PureComponent<Props> {
     if (!this.props.children) {
       return null
     }
-    console.log(this.props.mathbox)
+    // console.log(this.props.mathbox)
     return React.Children.map(
       this.props.children,
       child => React.cloneElement(child, {

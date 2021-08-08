@@ -90,7 +90,7 @@ class AbstractMBC extends React.Component<Props> {
   }
 
   componentDidMount = () => {
-    console.log('mbcomponents.js mbParent - ', this.props.mathboxParent)
+    // console.log('mbcomponents.js mbParent - ', this.props.mathboxParent)
     if (this.props.mathboxParent) {
       // $FlowFixMe: this.mathboxRender is abstract
       this.mathboxNode = this.mathboxRender(this.props.mathboxParent)

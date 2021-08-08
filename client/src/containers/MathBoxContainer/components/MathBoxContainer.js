@@ -53,7 +53,7 @@ const MathBoxContainer = (props) => {
     }
   }, [window] )
 
-  console.log('offset', props.leftOffset)
+  // console.log('offset', props.leftOffset)
 
   // when the left offset changes, update the state
   useEffect(() => {
