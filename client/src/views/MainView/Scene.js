@@ -25,8 +25,8 @@ type Props = {
 export default class Math3dScene extends PureComponent<Props> {
 
   render() {
-    console.log('mathbox - Scene.js', this.props.mathbox)
-    console.log('mathbox element - Scene.js',this.props.mathboxElement)
+    // console.log('mathbox - Scene.js', this.props.mathbox)
+    // console.log('mathbox element - Scene.js',this.props.mathboxElement)
     return (
       <SceneBoundary>
         <MathBoxContainer {...this.props}>

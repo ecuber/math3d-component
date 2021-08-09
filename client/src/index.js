@@ -18,6 +18,7 @@ import './index.css'
 import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
 
+
 const Math3D = (props) => {
   // useRef's instead of state to avoid unnecessary reload (https://dev.to/jz222/comment/ndbf)
   const mathboxRef = useRef(null)
@@ -53,6 +54,8 @@ const Math3D = (props) => {
      }
    }, [loaded] )
 
+  const { dev, showTitle, showName, drawer } = props
+
   return (
     <div style={{
       height: '100%', // will be overwritten if given by props.style
@@ -67,7 +70,8 @@ const Math3D = (props) => {
             <BrowserRouter>
               { 
               mathbox &&
-                <App domElement={mathboxRef.current} mathbox={mathbox} {...props}/>
+                // have to pass store as a prop; can't use useStore due to old react-redux version
+                <App storeRef={store} domElement={mathboxRef.current} mathbox={mathbox} {...props}/>
               }
             </BrowserRouter>
           </ThemeProvider>
@@ -86,7 +90,9 @@ Math3D.propTypes = {
   elem: PropTypes.oneOfType( [
     PropTypes.func, 
     PropTypes.shape( { current: PropTypes.any } )
-] )
+  ] ),
+  showTitle: PropTypes.bool,
+  showName: PropTypes.bool
 }
 
 export default Math3D

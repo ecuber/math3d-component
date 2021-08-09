@@ -21,7 +21,8 @@ type OwnProps = {|
   fullscreen?: boolean,
   mathbox: any,
   domElement: any,
-  style?: any
+  style?: any,
+  storeRef: any
 |}
 
 type DispatchProps = {|
@@ -87,7 +88,7 @@ function MainView(props: Props) {
   // console.log('mathbox element - MainView/index.js',props.domElement)
 
   return <FlexContainer ref={containerRef} style={containerStyle}>
-    <Modal
+    {/* <Modal
       visible={visible}
       confirmLoading={confirmLoading}
       onOk={handleOk}
@@ -95,8 +96,8 @@ function MainView(props: Props) {
       onCancel={() => setVisible(false)}
     >
       <p>{modalText}</p>
-    </Modal>
-    <Header mathbox={props.mathbox} dehydrated={dehydrated} showButton={showButton} />
+    </Modal> */}
+    <Header storeRef={props.storeRef} mathbox={props.mathbox} dehydrated={dehydrated} showButton={showButton} />
     <FlexContainer>
       <UserControls domElement={props.domElement} mathbox={props.mathbox} fullscreen={fullscreen} dev={dev} drawer={drawer || dev} />
       <Scene

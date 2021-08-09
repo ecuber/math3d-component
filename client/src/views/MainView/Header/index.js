@@ -8,7 +8,6 @@ import HeaderButton from './components/HeaderButton'
 import TitleInput from './containers/TitleInput'
 import HelpButton from './components/HelpButton'
 import ExamplesButton from './containers/ExamplesButton'
-import store from 'store/index';
 import HeaderMenu from './containers/HeaderMenu'
 import { Menu } from 'antd'
 const Item = Menu.Item
@@ -41,12 +40,15 @@ const SavedAt = styled.p`
 type Props = {
   dehydrated: any,
   showButton: boolean,
-  mathbox: any
+  mathbox: any,
+  storeRef: { current: any }
 }
 
 const Header = (props: Props) => {
-  const { showButton, mathbox, dehydrated } = props
-  const { getState } = store
+  const { showButton, mathbox, dehydrated, storeRef } = props
+  const { getState } = storeRef.current
+  console.log(storeRef)
+  console.log(getState)
   return (
     <HeaderContainer>
       <HeaderGroup>

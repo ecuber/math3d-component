@@ -14,7 +14,8 @@ App.propTypes = {
   style: PropTypes.any,
   fullscreen: PropTypes.bool,
   mathbox: PropTypes.any,
-  domElement: PropTypes.any
+  domElement: PropTypes.any,
+  storeRef: PropTypes.any
 }
 
 export default App
