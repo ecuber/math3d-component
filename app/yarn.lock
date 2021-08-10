@@ -7645,10 +7645,10 @@ material-colors@^1.2.1:
   resolved "https://registry.yarnpkg.com/material-colors/-/material-colors-1.2.6.tgz#6d1958871126992ceecc72f4bcc4d8f010865f46"
   integrity sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==
 
-math3d-component@^1.4.29:
-  version "1.4.29"
-  resolved "https://registry.yarnpkg.com/math3d-component/-/math3d-component-1.4.29.tgz#4784992a4a06e0d082277676840c37d00c18bd29"
-  integrity sha512-7LRtfD5eXrZn7hX5mykgiczDzS428UIJOB/gZ0ABFEX6zik6PcQ1kFTOQl17AOGWmJAKpiMO8PTSmlq6IyoABw==
+math3d-component@^1.4.31:
+  version "1.4.31"
+  resolved "https://registry.yarnpkg.com/math3d-component/-/math3d-component-1.4.31.tgz#a0a36b9ac8681321d7f235c02b5d69a4fe5cd09d"
+  integrity sha512-6ONtrEM9DpoSrRR6rJHEkVRW1S4H/gZEcwx8IEFcmCoyrF1gSLw+Sa7s7iwXDJAE3l98ffcR1iZvBMUtvxzLgA==
   dependencies:
     antd "^3.15.0"
     classnames "^2.2.6"
