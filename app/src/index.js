@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Math3D from 'math3d-component'
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 
@@ -11,9 +10,6 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route path='/' render={App}/>
-        <Route path='editor' render={({ dehydrated }) => {
-          return <Math3D dehydrated={dehydrated} dev={true}/>
-        }}/>
       </Switch>
     </Router>
   </React.StrictMode>,

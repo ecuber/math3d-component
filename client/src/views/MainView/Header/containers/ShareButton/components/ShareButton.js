@@ -134,7 +134,7 @@ export default class ShareButton extends PureComponent<Props, State> {
           {
             this.props.save
             ? <><strong>Graph saved.</strong> (scene ID: {this.state.id})</>
-            : <><strong>You haven&apos;t set a save function.</strong> (scene ID: {this.state.id})</>
+            : <><strong style={{ color: 'red' }}>You haven&apos;t set a save function.</strong> (scene ID: {this.state.id})</>
           }
         </SaveStatus>
         <CopyToClipboard text={this.dehydratedJson}>

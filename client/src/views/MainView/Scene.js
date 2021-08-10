@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 const SceneBoundary = styled.div`
   display:flex;
-  height:100%;
+  min-height:100%;
   width:100%;
   overflow: hidden;
   flex: 1;

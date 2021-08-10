@@ -4,8 +4,8 @@ import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 
 const MathBoxOuterDiv = styled.div`
-  width: ${props => props.width};
-  height: ${props => props.height};
+  width: 100%;
+  min-height: 100%;
   transform: translateX(${props => props.leftOffset});
   transition-duration: 0.7s;
   & ${props => !props.isAnimating && css`
@@ -26,14 +26,10 @@ const MathBoxContainer = (props) => {
 
   const containerRef = useRef(null)
 
-  // console.log('props: MathBoxContainer.js', props)
-  // console.log(props.leftOffset)
-  // console.log(window.innerWidth)
-    // console.log('mbelement - mbcontainer.js', props.mathboxElement)
   useEffect(() => {
     const { mathboxElement } = props
-    mathboxElement.parentNode.removeChild(mathboxElement)
-    containerRef?.current?.appendChild(mathboxElement)
+    mathboxElement.parentNode.removeChild(mathboxElement) // removes mathbox element from wherever it was before
+    containerRef?.current?.appendChild(mathboxElement) // adds it to this container
 
     // const ratio = props.componentRef.current?.clientWidth / window.innerWidth
     
