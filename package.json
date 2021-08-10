@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "yarn --cwd ./server start & yarn --cwd ./app start",
-    "update": "yarn --cwd ./server add math3d-component && yarn --cwd ./app add math3d-component",
+    "update": "yarn --cwd ./app add math3d-component",
     "build:app": "yarn --cwd ./app build"
   },
   "cacheDirectories": [

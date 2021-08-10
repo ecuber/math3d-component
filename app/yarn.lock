@@ -1217,14 +1217,14 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.14.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.6.tgz#535203bc0892efc7dec60bdc27b2ecf6e409062d"
   integrity sha512-/PCB2uJ7oM44tz8YhC4Z/6PeOKXp4K588f+5M3clr1M4zbqztlo0XEfJ2LEzj/FgwfgGcIdl8n7YYjTCI0BYwg==
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.12.1":
+"@babel/runtime@^7.12.1", "@babel/runtime@^7.3.1":
   version "7.14.8"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
   integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
@@ -7645,10 +7645,10 @@ material-colors@^1.2.1:
   resolved "https://registry.yarnpkg.com/material-colors/-/material-colors-1.2.6.tgz#6d1958871126992ceecc72f4bcc4d8f010865f46"
   integrity sha512-6qE4B9deFBIa9YSpOc9O0Sgc43zTeVYbgDT5veRKSlB2+ZuHNoVVxA1L/ckMUayV9Ay9y7Z/SZCLcGteW9i7bg==
 
-math3d-component@^1.4.2:
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/math3d-component/-/math3d-component-1.4.2.tgz#3ca0bc7db163879615e2e65df656b6a3e9511b83"
-  integrity sha512-gpLU16t7NGDlMKOqfqOToOKpIXyCBQkZIQi5mFmhK/BrauCL8l5Jln80Jtbju0ZHCodNWOG7yZHuRcrld+tFxg==
+math3d-component@^1.4.23:
+  version "1.4.23"
+  resolved "https://registry.yarnpkg.com/math3d-component/-/math3d-component-1.4.23.tgz#d9b3b6e66cad0b7e36fbf62d70faf8f53f2c454c"
+  integrity sha512-pEbjyAI6VmCh9wPVEyI4lNzuMfpW0jBRYlMDX6uCssMJ89W/4NFEXmRcGmg+ehbnNMMk9w/halE9oRiwVTeNVQ==
   dependencies:
     antd "^3.15.0"
     classnames "^2.2.6"
