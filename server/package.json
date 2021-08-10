@@ -4,10 +4,7 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "build": "webpack",
-    "start": "yarn dev:nodemon",
-    "dev:webpack": "webpack --watch",
-    "dev:nodemon": "node build/main.js"
+    "start": "nodemon --exec babel-node src/index.js"
   },
   "dependencies": {
     "@babel/cli": "^7.14.8",
@@ -15,25 +12,9 @@
     "@babel/node": "^7.14.7",
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.8",
-    "@babel/preset-react": "^7.14.5",
     "@babel/runtime": "^7.14.8",
-    "@loadable/babel-plugin": "^5.13.2",
-    "@loadable/component": "^5.15.0",
-    "@loadable/server": "^5.15.0",
-    "babel-loader": "^8.2.2",
     "body-parser": "^1.19.0",
-    "core-js": "^3.16.0",
-    "express": "^4.17.1",
-    "global": "^4.4.0",
-    "imports-loader": "^3.0.0",
-    "math3d-component": "^1.4.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "regenerator-runtime": "^0.13.9",
-    "webpack": "^5.47.1",
-    "webpack-node-externals": "^3.0.0"
+    "express": "^4.17.1"
   },
-  "devDependencies": {
-    "webpack-cli": "^4.7.2"
-  }
+  "devDependencies": {}
 }

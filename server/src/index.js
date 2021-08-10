@@ -1,17 +1,7 @@
 import express from 'express'
-import React from 'react'
-import {
-  renderToString,
-  renderToNodeStream
-} from 'react-dom/server'
-// import { WebSocket } from 'ws'
 import bodyParser from 'body-parser'
 import path from 'path'
 import fs from 'fs'
-// import { ChunkExtractor } from '@loadable/server'
-// import loadable from '@loadable/component'
-// const Math3D = loadable(() => import('math3d-component'))
-import Math3D from './Math3D'
 
 import * as config from '../server_config.js'
 
@@ -30,7 +20,7 @@ app.listen(PORT, () => {
 
 app.post('/dev/save', (req, res) => {
   let graphs
-  // create graphs if necessary
+  // create graphs file if necessary
   try {
     graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
   } catch(err) {
@@ -38,37 +28,20 @@ app.post('/dev/save', (req, res) => {
     graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
   }
 
-  fs.writeFile(JSON_PATH, JSON.stringify({ ...graphs, [req.body.id]: req.body.dehydrated }), 'utf8', (err) => {
+  const { dehydrated } = req.body
+  const { id } = dehydrated.metadata
+
+  console.log('dehydrated', dehydrated)
+  console.log('id', id)
+
+  fs.writeFile(JSON_PATH, JSON.stringify({ ...graphs, [id]: dehydrated }), 'utf8', (err) => {
     if (err) {
       next(err)
     } else {
-      console.log(`successfully wrote graph ${req.body.id} to file`)
+      console.log(`successfully wrote graph ${id} to file`)
       res.sendStatus(200)
     }
   })
-})
-
-app.get('/dev/get/:id', (req, res) => {
-  const graphs = JSON.parse(fs.readFileSync(JSON_PATH, 'utf-8'))
-  res.json(graphs[req.params.id])
-})  
-
-const boilerplate = (children) => (
-  <html>
-    <head><title>Editor</title></head>
-    <body>{children}</body>
-  </html>
-)
-
-app.get('/dev/edit', (req, res) => {
-  const { dehydrated } = req.body
-  console.log('Received edit request.')
-  // top of file: import { renderToString } from 'react-dom/server.js'
-  const component = <Math3D dehydrated={dehydrated}/>
-  console.log('math3d', component)
-  const html = renderToString(boilerplate(component))
-  console.log(html)
-  res.send(html)
 })
 
 app.use(function(error, req, res, next) {
