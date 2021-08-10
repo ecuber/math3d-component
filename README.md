@@ -14,4 +14,4 @@ The files in this repository have been forked from the [math3d-react](https://gi
 
 ## Using in your own project
 
-The component itself is published on [npm](https://npmjs.org) as [math3d-component](https://www.npmjs.com/package/math3d-component). 
+The component itself is published on [npm](https://npmjs.org) as [math3d-component](https://www.npmjs.com/package/math3d-component). Please see [the component documentation](https://github.com/ecuber/math3d-component/blob/master/client/README.md) for detailed information on how to use it in your React app.
