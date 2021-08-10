@@ -41,14 +41,13 @@ type Props = {
   dehydrated: any,
   showButton: boolean,
   mathbox: any,
-  storeRef: { current: any }
+  storeRef: { current: any },
+  save?: (dehydrated: any) => void
 }
 
 const Header = (props: Props) => {
-  const { showButton, mathbox, dehydrated, storeRef } = props
+  const { showButton, mathbox, dehydrated, save, storeRef } = props
   const { getState } = storeRef.current
-  console.log(storeRef)
-  console.log(getState)
   return (
     <HeaderContainer>
       <HeaderGroup>
@@ -59,17 +58,7 @@ const Header = (props: Props) => {
         {/** TODO: update save button styles */}
         {
             props.showButton &&
-            <ShareButton mathbox={mathbox} dehydrated={dehydrated} getState={getState}/>
-            // <HStack>
-            //   <SavedAt>
-            //     {
-            //       props.dehydrated.edited 
-            //       ? `Last saved at ${props.dehydrated.edited}`
-            //       : 'You have unsaved changes'
-            //     }
-            //   </SavedAt>
-            //   <ShareButton dehydrated={props.dehydrated} getState={store.getState}/>
-            // </HStack>
+            <ShareButton save={save} mathbox={mathbox} dehydrated={dehydrated} getState={getState}/>
           }
         {/* <HeaderMenu>
           <Item><ExamplesButton /></Item>
@@ -77,11 +66,6 @@ const Header = (props: Props) => {
       </HeaderGroup>
     </HeaderContainer>
   )
-}
-
-Header.propTypes = {
-  showButton: PropTypes.bool,
-  dehydrated: PropTypes.object
 }
 
 export default Header

@@ -19,6 +19,24 @@ const SharePopoverContainer = styled.div`
   flex-direction:column;
 `
 
+const HStack = styled.div`
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-content: center;
+`
+
+const IdLabel = styled.p`
+  white-space: nowrap;
+  flex-grow: 1;
+  line-height: 100%;
+  height: 100%
+  margin: 0;
+  margin-right: 0.5rem;
+`
+
 const CopyContainer = styled.div`
   display: flex;
   align-items: center;
@@ -49,7 +67,8 @@ type Props = {
   setProperty: SetProperty,
   setCreationDate: SetCreationDate,
   dehydrated: any,
-  mathbox: any
+  mathbox: any,
+  save?: (dehydrated: any) => void
 }
 type State = {
   id: ?string,
@@ -58,10 +77,14 @@ type State = {
 
 export default class ShareButton extends PureComponent<Props, State> {
 
-  state = {
-    id: null,
-    isSaved: false,
-    showWarning: true
+  constructor(props: Props) {
+    super(props)
+
+    this.state = {
+      id: this.props?.dehydrated?.metadata?.id ?? this.getId(),
+      isSaved: false,
+      showWarning: true
+    }
   }
 
   dehydratedJson: ?string
@@ -83,25 +106,18 @@ export default class ShareButton extends PureComponent<Props, State> {
     this.saveCameraData()
     let state = this.props.getState() // loads scene state from parent (including newly updated camera stuff)
     const dehydrated = dehydrate(state)
-    const lastUpdated = new Date()
-    const id = this.state.id ?? this.props?.dehydrated?.metadata?.id ?? this.getId()
-    const body = { id, dehydrated, lastUpdated }
+    const withMetadata = {
+      ...dehydrated,
+      metadata: { id: this.state.id, ...dehydrated.metadata }
+    }
 
-    fetch('dev/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    } )
-    .then((res) => {
-      if (res.ok) {
-        this.setState( { isSaved: true } )
-      }
-    } )
+    console.log('withMetadata', withMetadata)
+
+    if (this.props.save) {
+      this.props.save(withMetadata)
+    }
 
     this.dehydratedJson = JSON.stringify(dehydrated)
-    this.setState( { id } )
   }
 
   onVisibleChange = (visible: boolean) => {
@@ -111,9 +127,15 @@ export default class ShareButton extends PureComponent<Props, State> {
 
   renderContent() {
     // const url = this.state.id && `${URL_FRONT}/${this.state.id}`
+    console.log(this.props.save)
+    console.log(this.props.save ? true : false)
     return (<>
         <SaveStatus isVisible={true}>
-          <strong>Graph saved.</strong> (scene ID: {this.state.id})
+          {
+            this.props.save
+            ? <><strong>Graph saved.</strong> (scene ID: {this.state.id})</>
+            : <><strong>You haven&apos;t set a save function.</strong> (scene ID: {this.state.id})</>
+          }
         </SaveStatus>
         <CopyToClipboard text={this.dehydratedJson}>
           <Button type='danger'>Copy Dehydrated State (Dev Only)</Button>
@@ -124,7 +146,9 @@ export default class ShareButton extends PureComponent<Props, State> {
 
   render() {
     return (
-      <PopModal
+      <HStack>
+        <IdLabel>Graph ID: {this.state.id}</IdLabel>
+        <PopModal
         // TODO: add "last saved at hh:mm indicator?"
         onVisibleChange={this.onVisibleChange}
         source={
@@ -140,6 +164,7 @@ export default class ShareButton extends PureComponent<Props, State> {
       >
         {this.renderContent()}
       </PopModal>
+      </HStack>
     )
   }
 

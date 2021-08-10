@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, createContext } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import newStore from 'store';
+import newStore from 'store'
 import { Provider } from 'react-redux'
 import App from './App'
 import { hasMeaningfulChangeOccured } from 'services/lastSavedState/index';
@@ -92,7 +92,8 @@ Math3D.propTypes = {
     PropTypes.shape( { current: PropTypes.any } )
   ] ),
   showTitle: PropTypes.bool,
-  showName: PropTypes.bool
+  showName: PropTypes.bool,
+  save: PropTypes.func
 }
 
 export default Math3D

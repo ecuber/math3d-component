@@ -22,7 +22,8 @@ type OwnProps = {|
   mathbox: any,
   domElement: any,
   style?: any,
-  storeRef: any
+  storeRef: any,
+  save?: (dehydrated: any) => void
 |}
 
 type DispatchProps = {|
@@ -42,30 +43,8 @@ function MainView(props: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [windowWidth, setWindowWidth] = useState(0)
   
-  const { drawer, dev, fullscreen, dehydrated } = props
+  const { drawer, dev, fullscreen, dehydrated, save, storeRef, mathbox, domElement } = props
   const showButton = dev ?? false
-
-  // Dev mode modal state
-  const [visible, setVisible] = useState(!fullscreen && dev)
-  const [confirmLoading, setConfirmLoading] = useState(false)
-  const [modalText, setModalText] = useState('Would you like to open the graph editor?')
-
-  const handleOk = async () => {
-    setModalText('Opening graph editor in a new tab...')
-    setConfirmLoading(true)
-    await fetch('dev/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify( { dehydrated } )
-    } )
-    .then((res) => {
-      if (res.ok) {
-        setModalText('Graph editor opened in a new tab. Press the Launch Editor button again to reopen it.')
-      }
-    } )
-  }
 
   useLayoutEffect(() => {
     if (dehydrated) {
@@ -88,21 +67,12 @@ function MainView(props: Props) {
   // console.log('mathbox element - MainView/index.js',props.domElement)
 
   return <FlexContainer ref={containerRef} style={containerStyle}>
-    {/* <Modal
-      visible={visible}
-      confirmLoading={confirmLoading}
-      onOk={handleOk}
-      okText='Launch Editor'
-      onCancel={() => setVisible(false)}
-    >
-      <p>{modalText}</p>
-    </Modal> */}
-    <Header storeRef={props.storeRef} mathbox={props.mathbox} dehydrated={dehydrated} showButton={showButton} />
+    <Header save={save} storeRef={storeRef} mathbox={mathbox} dehydrated={dehydrated} showButton={showButton} />
     <FlexContainer>
-      <UserControls domElement={props.domElement} mathbox={props.mathbox} fullscreen={fullscreen} dev={dev} drawer={drawer || dev} />
+      <UserControls domElement={domElement} mathbox={mathbox} fullscreen={fullscreen} dev={dev} drawer={drawer || dev} />
       <Scene
-        mathboxElement={props.domElement}
-        mathbox={props.mathbox}
+        mathboxElement={domElement}
+        mathbox={mathbox}
         componentRef={containerRef}
         drawer={drawer}
         height={props.height}

@@ -15,7 +15,8 @@ App.propTypes = {
   fullscreen: PropTypes.bool,
   mathbox: PropTypes.any,
   domElement: PropTypes.any,
-  storeRef: PropTypes.any
+  storeRef: PropTypes.any,
+  save: PropTypes.func,
 }
 
 export default App

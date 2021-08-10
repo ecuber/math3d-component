@@ -28,7 +28,7 @@ You will need to include the appropriate files to import in your public folder a
 * mathquill.min.js
 * mathquill.css
 
-Optionally, you may include your own jquery installation in your public folder as well.abs
+Optionally, you may include your own jquery installation in your public folder as well.
 
 ## Setting up without CRA
 
