@@ -110,9 +110,11 @@ All props are optional, but if you want to show anything other than the default 
 
 ### Saving Scenes
 
-The only way to save scenes is in development mode. This means you (yes, you!) must physically click the **Save Graph** button in the top right corner of the component once you are done setting up your scene. Clicking on the button will do 2 things:
+The only way to save scenes is in **development mode** (i.e. `dev` prop is set to `true`). This means you (yes, you!) must physically click the **Save Graph** button in the top right corner of the component once you are done setting up your scene. 
 
-1. Run whatever function you passed as a prop, and give it the latest version of the component state in its dehydrated JSON form for you to store somewhere.
+Clicking on the button will do 2 things:
+
+1. Call whatever function you passed as a prop, and give it the latest version of the component state in its dehydrated JSON form for you to store somewhere.
     * The `dehydrated` parameter that is passed to this function is what you'll want to store somewhere.
     * To use the component again, you'll want to reference whereever you save this object (see [this example repository](https://github.com/ecuber/math3d-component/blob/master/app) for ideas on how to do that!)
 2. Render another button for you to copy the dehydrated state to your keyboard. If you do not want to implement an automatic saving function, you may use this button and manually save the dehydrated scene somewhere yourself.
@@ -143,10 +145,10 @@ This can be useful for creating unique keys for each of your graphs in your data
 1. Create a new, blank webpage. Add an instance of the Math3D component to the page. Set the `dev` prop to true, and set up your `save` function.
 2. Start the dev server.
 3. Save the scene immediately! **Take note of the unique ID in the display underneath the save button.**
-4. Return to your page code and update it to provide the `<Math3D/>` component with the `dehydrated` prop. It's best if this is a dynamic reference, so if the value of the graph changes, your graph will render from the same place.
+4. Return to your page code and update it to provide the `<Math3D/>` component with the `dehydrated` prop by pointing it to wherever you saved your graph. This may be in a local JSON file or on a remote database-- just be sure to provide it with the correct object.
 5. Finish editing your graph. Each time you make a major change, press that save button! This will call your save function and update your records in case you close the tab or reload by accident.
 
 
-## Why all this setup?
+## Why is there so much setup?
 
 The original project, [math3d-react](https://github.com/ChristopherChudzicki/math3d-react), was intended to be a standalone website running in its own environment, so using these window-level imports made sense then. The only way to package it all into a reusable component without significantly changing the implementation of each package is to include the same global variables where they are necessary. It's probably possible to work some webpack magic to handle these imports on the component side (I tried), but the easy solution is to just import them on the client side.
