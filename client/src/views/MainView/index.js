@@ -67,7 +67,10 @@ function MainView(props: Props) {
   // console.log('mathbox element - MainView/index.js',props.domElement)
 
   return <FlexContainer ref={containerRef} style={containerStyle}>
-    <Header save={save} storeRef={storeRef} mathbox={mathbox} dehydrated={dehydrated} showButton={showButton} />
+    {
+      showButton &&
+      <Header save={save} storeRef={storeRef} mathbox={mathbox} dehydrated={dehydrated} showButton={showButton} />
+    }
     <FlexContainer>
       <UserControls domElement={domElement} mathbox={mathbox} fullscreen={fullscreen} dev={dev} drawer={drawer || dev} />
       <Scene
