@@ -1,7 +1,7 @@
 var path = require('path')
 var externalReact = require('webpack-external-react')
 var webpack = require('webpack')
-var NODE_ENV = 'development'
+var NODE_ENV = 'production'
 var jQueryPath = path.resolve(path.join(__dirname, 'src/libs/jquery.min.js'))
 var mathquillPath = path.resolve(path.join(__dirname, 'src/libs/mathquill.min.js'))
 var mathBoxPath = path.resolve(path.join(__dirname, 'src/libs/mathbox-bundle.min.js'))
